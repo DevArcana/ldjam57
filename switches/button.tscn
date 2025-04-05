@@ -21,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0107056, 0)
 shape = SubResource("CylinderShape3D_h6ad1")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+visible = false
 stream = ExtResource("3_ridh6")
 
 [node name="Mesh" parent="." instance=ExtResource("3_r6s4o")]

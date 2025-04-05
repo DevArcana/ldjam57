@@ -20,12 +20,13 @@ metadata/_custom_type_script = "uid://b75cilkstssdu"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0201172, 0)
 shape = SubResource("CylinderShape3D_h6ad1")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+visible = false
+stream = ExtResource("3_g5yq5")
+
 [node name="Mesh" parent="." instance=ExtResource("1_wpoi0")]
 
 [node name="ToggleSwitchFlick" parent="Mesh" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_g5yq5")
 
 [editable path="Mesh"]

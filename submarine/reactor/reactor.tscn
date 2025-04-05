@@ -52,10 +52,10 @@ height = 0.02
 radial_segments = 8
 rings = 2
 
-[node name="Reactor" type="StaticBody3D" node_paths=PackedStringArray("heat_indicators", "power_indicators", "particles")]
+[node name="Reactor" type="StaticBody3D" node_paths=PackedStringArray("heat_indicators", "value_indicators", "particles")]
 script = ExtResource("1_ricsu")
 heat_indicators = [NodePath("Mesh/HeatD1"), NodePath("Mesh/HeatD2"), NodePath("Mesh/HeatD3"), NodePath("Mesh/HeatD4"), NodePath("Mesh/HeatD5")]
-power_indicators = [NodePath("Mesh/PowerD1"), NodePath("Mesh/PowerD2"), NodePath("Mesh/PowerD3"), NodePath("Mesh/PowerD4"), NodePath("Mesh/PowerD5")]
+value_indicators = [NodePath("Mesh/PowerD1"), NodePath("Mesh/PowerD2"), NodePath("Mesh/PowerD3"), NodePath("Mesh/PowerD4"), NodePath("Mesh/PowerD5")]
 particles = NodePath("GPUParticles3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -102,13 +102,13 @@ amount = 512
 process_material = SubResource("ParticleProcessMaterial_v43w7")
 draw_pass_1 = SubResource("SphereMesh_gyxkp")
 
-[node name="Button" parent="." instance=ExtResource("4_05wb6")]
+[node name="Inc" parent="." instance=ExtResource("4_05wb6")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0189644, 0.426351, 0.400279)
 
-[node name="Button2" parent="." instance=ExtResource("4_05wb6")]
+[node name="Dec" parent="." instance=ExtResource("4_05wb6")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0189644, 0.269634, 0.402775)
 
-[connection signal="pressed" from="Button" to="." method="inc_power"]
-[connection signal="pressed" from="Button2" to="." method="dec_power"]
+[connection signal="pressed" from="Inc" to="." method="inc_value"]
+[connection signal="pressed" from="Dec" to="." method="dec_value"]
 
 [editable path="Mesh"]
