@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://hktbh6i7wskp"]
+
+[ext_resource type="ArrayMesh" uid="uid://4opy81oju6ix" path="res://assets/models/submarine/sonar.res" id="1_vc4sm"]
+
+[node name="Sonar" type="Node3D"]
+
+[node name="Sonar" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_vc4sm")

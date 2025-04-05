@@ -2,7 +2,6 @@ extends Node
 
 #region Systems
 var reactor: SubmarineReactor
-var cooling: SubmarineCooling
 #endregion
 
 #region Power
@@ -71,4 +70,3 @@ func _physics_process(delta: float) -> void:
 	if timer > TIME_PER_TICK:
 		timer = 0.0
 		reactor.tick()
-		cooling.tick()

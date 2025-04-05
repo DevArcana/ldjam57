@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://uxp5tpmomrff"]
+[gd_scene load_steps=13 format=3 uid="uid://uxp5tpmomrff"]
 
 [ext_resource type="Script" uid="uid://bm308egkfr4vm" path="res://submarine/reactor/reactor.gd" id="1_ricsu"]
-[ext_resource type="PackedScene" uid="uid://d3cr5k8t8k7lg" path="res://assets/models/reactor.glb" id="1_v43w7"]
-[ext_resource type="Material" uid="uid://dcjtmhebcr1is" path="res://assets/materials/indicator_red.tres" id="3_gyxkp"]
+[ext_resource type="ArrayMesh" uid="uid://c05xo4oaiwl6q" path="res://assets/models/submarine/reactor.res" id="2_05wb6"]
 [ext_resource type="PackedScene" uid="uid://ctdwnh8tu38wm" path="res://switches/button.tscn" id="4_05wb6"]
 [ext_resource type="PackedScene" uid="uid://bh20ok1tkb0kb" path="res://submarine/reactor/indicator.tscn" id="4_ilotv"]
 
@@ -60,86 +59,44 @@ heat_indicator = NodePath("HeatIndicator")
 particles = NodePath("GPUParticles3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.726501, 0.271253, -0.0771365)
-visible = false
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.212911, 1.2783, 2.15897)
 shape = SubResource("BoxShape3D_v43w7")
 
-[node name="Mesh" parent="." instance=ExtResource("1_v43w7")]
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_05wb6")
 
-[node name="HeatD1" parent="Mesh" index="4"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="HeatD2" parent="Mesh" index="5"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="HeatD3" parent="Mesh" index="6"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="HeatD4" parent="Mesh" index="7"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="HeatD5" parent="Mesh" index="8"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="PowerD1" parent="Mesh" index="9"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="PowerD2" parent="Mesh" index="10"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="PowerD3" parent="Mesh" index="11"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="PowerD4" parent="Mesh" index="12"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="PowerD5" parent="Mesh" index="13"]
-visible = false
-material_override = ExtResource("3_gyxkp")
-
-[node name="Label3D" type="Label3D" parent="Mesh"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0736182, 0.575627, 0.471599)
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.782783, 1.58003, 1.57563)
 pixel_size = 0.0003
 text = "Power"
 font_size = 64
 outline_size = 0
 
-[node name="Label3D2" type="Label3D" parent="Mesh"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0736182, 0.575627, -0.0762658)
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.234919, 1.58003, 1.57563)
 pixel_size = 0.0003
 text = "Heat"
 font_size = 64
 outline_size = 0
 
 [node name="PowerIndicator" parent="." instance=ExtResource("4_ilotv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0713496, 0.599, 0.392483)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.703667, 1.6034, 1.57337)
 
 [node name="HeatIndicator" parent="." instance=ExtResource("4_ilotv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0713496, 0.599, -0.137016)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.174169, 1.6034, 1.57337)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.632037, 0.269469, -0.466308)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.155123, 1.27387, 2.13405)
 cast_shadow = 0
 amount = 512
 process_material = SubResource("ParticleProcessMaterial_v43w7")
 draw_pass_1 = SubResource("SphereMesh_gyxkp")
 
 [node name="Inc" parent="." instance=ExtResource("4_05wb6")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0189644, 0.426351, 0.400279)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.711464, 1.43075, 1.52098)
 
 [node name="Dec" parent="." instance=ExtResource("4_05wb6")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0189644, 0.269634, 0.402775)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.71396, 1.27404, 1.52098)
 
 [connection signal="pressed" from="Inc" to="." method="inc_value"]
 [connection signal="pressed" from="Dec" to="." method="dec_value"]
-
-[editable path="Mesh"]
