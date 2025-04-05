@@ -14,70 +14,33 @@ const material_green: Material = preload("res://assets/materials/indicator_green
 const material_blue: Material = preload("res://assets/materials/indicator_blue.tres")
 const material_off: Material = preload("res://assets/materials/indicator_off.tres")
 
-var value: int = 0
-var drawing: Array[SubmarineSystem] = []
-
-const MAX_VALUE: int = 5
-
-var heat_per_tick: int = 0
-var heat: int = 0
-var heat_capacity: int = 5
-
-func reset_indicators() -> void:
+func refresh_visuals() -> void:
 	for i in len(heat_indicators):
-		if i < heat:
-			heat_indicators[i].material_override = material_red
-		else:
-			heat_indicators[i].material_override = material_off
+		heat_indicators[i].material_override = material_off
 	
 	for i in len(value_indicators):
-		if i < value:
-			if i < len(drawing):
+		if i < Submarine.power_generated:
+			if i < Submarine.power_consumed:
 				value_indicators[i].material_override = material_green
 			else:
 				value_indicators[i].material_override = material_blue
 		else:
 			value_indicators[i].material_override = material_off
 	
-	var amt := value / float(MAX_VALUE)
+	var amt := Submarine.power_generated / float(len(value_indicators))
 	particles.amount_ratio = amt
-	
-	var unused := value - len(drawing)
-	heat_per_tick = value * 2 + unused
 
 func _ready() -> void:
-	reset_indicators()
+	refresh_visuals()
+	Submarine.power_unit_consumed.connect(refresh_visuals)
+	Submarine.power_unit_released.connect(refresh_visuals)
 
 func inc_value() -> void:
-	if value < MAX_VALUE:
-		value += 1
-		reset_indicators()
+	if Submarine.power_generated < len(value_indicators):
+		Submarine.power_generated += 1
+	refresh_visuals()
 
 func dec_value() -> void:
-	if value > 0:
-		value -= 1
-		if len(drawing) > value:
-			(drawing.pop_front() as SubmarineSystem).drain_power()
-		reset_indicators()
-
-## A system can draw a unit of power from the reactor if there is enough capacity.
-func draw_power(system: SubmarineSystem) -> bool:
-	if len(drawing) >= value:
-		return false
-	
-	drawing.push_front(system)
-	reset_indicators()
-	return true
-
-func release_power(system: SubmarineSystem) -> bool:
-	# find the last instance of a given system in the stack
-	for i in len(drawing):
-		if drawing[i] == system:
-			drawing.remove_at(i)
-			reset_indicators()
-			return true
-	return false
-
-func tick() -> void:
-	heat += heat_per_tick
-	heat = clamp(heat, 0, heat_capacity)
+	if Submarine.power_generated > 0:
+		Submarine.power_generated -= 1
+	refresh_visuals()

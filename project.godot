@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+Submarine="*res://submarine/submarine.gd"
 
 [debug]
 

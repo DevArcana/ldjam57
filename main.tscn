@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cr2crs5tmcekg"]
 
-[ext_resource type="Script" uid="uid://h26n30qtliws" path="res://submarine/submarine.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://idtd26kvi8kl" path="res://assets/models/submarine.glb" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bf27vwrjjc8bq" path="res://submarine/submarine_init.gd" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b2qrph3tx4lx3" path="res://submarine/cooling/cooling.tscn" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://1raoo6hvdfs4" path="res://assets/models/sonar.glb" id="5_lquwl"]
@@ -44,10 +44,12 @@ mouse_filter = 2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ig7tw")
 
-[node name="Submarine" parent="." node_paths=PackedStringArray("reactor", "cooling") instance=ExtResource("1_ig7tw")]
-script = ExtResource("1_272bh")
-reactor = NodePath("Reactor")
-cooling = NodePath("Cooling")
+[node name="Submarine" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Init" type="Node" parent="Submarine" node_paths=PackedStringArray("reactor", "cooling")]
+script = ExtResource("3_5vw27")
+reactor = NodePath("../Reactor")
+cooling = NodePath("../Cooling")
 
 [node name="Reactor" parent="Submarine" instance=ExtResource("7_272bh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.202751, 1, -1.60924)

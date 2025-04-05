@@ -1,26 +1,58 @@
 extends Node
-class_name Submarine
 
-@export var reactor: SubmarineReactor
-@export var cooling: SubmarineCooling
+#region Systems
+var reactor: SubmarineReactor
+var cooling: SubmarineCooling
+#endregion
 
-## how many seconds per tick
-const SECONDS_PER_TICK: float = 1.0
+#region Power
+var _power_generated: int = 0
+var _power_consumed_units: Array[SubmarineSystem] = []
 
-func _ready() -> void:
-	Global.submarine = self
+## Emitted whenever consume_power_unit returns true.
+signal power_unit_consumed
 
-func adjust_temperature(system: SubmarineSystem, avg_temp: float, delta: float) -> void:
-	system.temperature = lerp(system.temperature, avg_temp, abs(system.temperature-avg_temp)/avg_temp * delta)
+## Emitted whenever release_power_unit returns true.
+signal power_unit_released
 
-var timer: float = 0.0
-func _physics_process(delta: float) -> void:
-	timer += delta
-	if timer > SECONDS_PER_TICK:
-		timer = 0.0
-		reactor.tick()
-		cooling.tick()
+## Number of power units currently produced by the reactor.
+var power_generated: int:
+	get:
+		return _power_generated
+	set(value):
+		_power_generated = value
+		
+		while power_generated < power_consumed:
+			(_power_consumed_units.pop_front() as SubmarineSystem).power_unit_drained()
+
+## Number of power units currently consumed by all systems.
+var power_consumed: int:
+	get:
+		return len(_power_consumed_units)
+
+## Number of available power units.
+var power_available: int:
+	get:
+		return power_generated - power_consumed
+
+## Try to consume a unit of power.
+func consume_power_unit(system: SubmarineSystem) -> bool:
+	if power_available == 0:
+		return false
 	
-	DebugDraw2D.set_text("reactor power (drawn/generated/total)", "%s/%s/%s" % [len(reactor.drawing), reactor.value, reactor.MAX_VALUE])
-	DebugDraw2D.set_text("reactor heat (current/capacity)", "%s/%s" % [reactor.heat, reactor.heat_capacity])
-	DebugDraw2D.set_text("cooling power (generated/total)", "%s/%s" % [cooling.value, cooling.MAX_VALUE])
+	_power_consumed_units.push_front(system)
+	system.power_unit_provided()
+	power_unit_consumed.emit()
+	return true
+
+## Release a consumed unit of power if the system is indeed consuming it.
+func release_power_unit(system: SubmarineSystem) -> bool:
+	for i in len(_power_consumed_units):
+		if _power_consumed_units[i] == system:
+			_power_consumed_units[i].power_unit_drained()
+			_power_consumed_units.remove_at(i)
+			power_unit_released.emit()
+			return true
+	
+	return false
+#endregion

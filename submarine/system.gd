@@ -1,8 +1,12 @@
 extends Node
 class_name SubmarineSystem
 
-func drain_power() -> void:
+## Called when a unit of power is taken from a system.
+## Including when release_power_unit was called.
+func power_unit_drained() -> void:
 	pass
 
-func tick() -> void:
+## Called when a unit of power is provided to a system.
+## Including when consume_power_unit was called.
+func power_unit_provided() -> void:
 	pass
