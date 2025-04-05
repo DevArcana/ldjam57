@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://nfnnlxxwwg4i"]
+[gd_scene load_steps=4 format=3 uid="uid://nfnnlxxwwg4i"]
 
 [ext_resource type="Script" uid="uid://jf6vv85osh8b" path="res://player/player.gd" id="1_oul6g"]
 
@@ -6,10 +6,15 @@
 height = 1.8
 radius = 0.4
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("body", "head")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_oul6g"]
+radius = 0.1
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("body", "head", "interactor", "camera")]
 script = ExtResource("1_oul6g")
 body = NodePath("Body")
 head = NodePath("Body/Head")
+interactor = NodePath("Body/Head/Camera3D/ShapeCast3D")
+camera = NodePath("Body/Head/Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -21,3 +26,9 @@ shape = SubResource("CylinderShape3D_kqu6x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Body/Head"]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Body/Head/Camera3D"]
+shape = SubResource("SphereShape3D_oul6g")
+target_position = Vector3(0, 0, -2)
+max_results = 1
+collision_mask = 2

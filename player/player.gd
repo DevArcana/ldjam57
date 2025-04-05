@@ -8,6 +8,12 @@ extends CharacterBody3D
 ## Used for X-axis view rotation.
 @export var head: Node3D
 
+## Used for triggering interactables
+@export var interactor: ShapeCast3D
+
+## Used for interaction in mouse mode
+@export var camera: Camera3D
+
 @export_category("Settings")
 @export_subgroup("View")
 @export var mouse_sensitivity: float = 3.68
@@ -37,7 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _physics_process(delta: float) -> void:
+func handle_movement(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
 	var wish_dir := body.global_basis * Vector3(input_dir.x, 0, input_dir.y)
 	wish_dir = wish_dir.normalized()
@@ -45,3 +51,52 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.lerp(wish_dir * movement_speed, 20 * delta)
 	
 	move_and_slide()
+
+var focused: Interactable
+var interacting := false
+func handle_interactable(interactable: Interactable) -> void:
+	if not interacting:
+		if interactable == null:
+			if focused != null:
+				focused.unfocus()
+				focused = null
+			return
+		
+		if focused != interactable:
+			if focused != null:
+				focused.unfocus()
+			focused = interactable
+			focused.focus()
+	
+		if focused and Input.is_action_just_pressed("interact"):
+			focused.interact_start()
+			interacting = true
+	else:
+		var max_dist: float = abs(interactor.target_position.z)
+		max_dist *= max_dist
+		if focused and (Input.is_action_just_released("interact") or focused.global_position.distance_squared_to(global_position) > max_dist):
+			focused.interact_stop()
+			interacting = false
+
+func handle_interactions() -> void:
+	var interactable: Interactable = null
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if interactor.is_colliding():
+			interactable = interactor.get_collider(0) as Interactable
+			assert(interactable != null)
+	else:
+		var space_state := camera.get_world_3d().get_direct_space_state()
+		var mouse_pos := get_viewport().get_mouse_position()
+		var params := PhysicsRayQueryParameters3D.new()
+		params.from = camera.project_ray_origin(mouse_pos)
+		params.to = params.from + camera.project_ray_normal(mouse_pos) * abs(interactor.target_position.z)
+		params.collision_mask = 0b10
+		var result := space_state.intersect_ray(params)
+		if not result.is_empty():
+			interactable = result["collider"] as Interactable
+	
+	handle_interactable(interactable)
+
+func _physics_process(delta: float) -> void:
+	handle_movement(delta)
+	handle_interactions()

@@ -8,11 +8,13 @@
 height = 0.1
 radius = 0.1
 
-[node name="ToggleSwitch" type="StaticBody3D" node_paths=PackedStringArray("meshes", "flick", "audio")]
+[node name="ToggleSwitch" type="StaticBody3D" node_paths=PackedStringArray("flick", "audio", "meshes")]
+collision_layer = 2
 script = ExtResource("1_h6ad1")
-meshes = [NodePath("Mesh/ToggleSwitchBase"), NodePath("Mesh/ToggleSwitchFlick")]
 flick = NodePath("Mesh/ToggleSwitchFlick")
 audio = NodePath("AudioStreamPlayer3D")
+meshes = [NodePath("Mesh/ToggleSwitchBase"), NodePath("Mesh/ToggleSwitchFlick")]
+metadata/_custom_type_script = "uid://b75cilkstssdu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_h6ad1")
