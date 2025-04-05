@@ -1,6 +1,10 @@
 extends SubmarineSystem
 class_name SubmarineReactor
 
+# Reactor produces units of power.
+# Each produced unit of power generates 2 units of heat.
+# Each unused unit of power produces additioanl unit of heat.
+
 @export var heat_indicators: Array[MeshInstance3D]
 @export var value_indicators: Array[MeshInstance3D]
 @export var particles: GPUParticles3D
@@ -14,11 +18,14 @@ var value: int = 0
 var drawing: Array[SubmarineSystem] = []
 
 const MAX_VALUE: int = 5
-const MAX_HEAT: int = 5
+
+var heat_per_tick: int = 0
+var heat: int = 0
+var heat_capacity: int = 5
 
 func reset_indicators() -> void:
 	for i in len(heat_indicators):
-		if i < value:
+		if i < heat:
 			heat_indicators[i].material_override = material_red
 		else:
 			heat_indicators[i].material_override = material_off
@@ -36,7 +43,7 @@ func reset_indicators() -> void:
 	particles.amount_ratio = amt
 	
 	var unused := value - len(drawing)
-	temp_change = value * 2 + unused * 0.5
+	heat_per_tick = value * 2 + unused
 
 func _ready() -> void:
 	reset_indicators()
@@ -70,3 +77,7 @@ func release_power(system: SubmarineSystem) -> bool:
 			reset_indicators()
 			return true
 	return false
+
+func tick() -> void:
+	heat += heat_per_tick
+	heat = clamp(heat, 0, heat_capacity)

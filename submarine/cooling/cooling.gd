@@ -1,14 +1,7 @@
 extends SubmarineSystem
 class_name SubmarineCooling
 
-var _value: int = 0
-var value: int:
-	get:
-		return _value
-	set(v):
-		_value = v
-		temp_change = -v * 5
-
+var value: int = 0
 const MAX_VALUE: int = 5
 
 func drain_power() -> void:
@@ -21,3 +14,9 @@ func inc_cooling() -> void:
 func dec_cooling() -> void:
 	if value > 0 and Global.submarine.reactor.release_power(self):
 		value -= 1
+
+func tick() -> void:
+	Global.submarine.reactor.heat -= value * 3
+	if Global.submarine.reactor.heat < 0:
+		Global.submarine.reactor.heat = 0
+	Global.submarine.reactor.reset_indicators()
