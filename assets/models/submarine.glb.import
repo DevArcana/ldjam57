@@ -38,6 +38,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://bva6cdtbhwgx1"
 },
+"MetalLight": {
+"use_external/enabled": true,
+"use_external/path": "uid://cfh48l5ulbs25"
+},
 "MetalSurface": {
 "use_external/enabled": true,
 "use_external/path": "uid://cet1x2nn2w316"
@@ -48,6 +52,14 @@ _subresources={
 }
 },
 "meshes": {
+"submarine_Light": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/submarine/light.res"
+},
 "submarine_Reactor": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,

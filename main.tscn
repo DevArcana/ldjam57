@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=11 format=3 uid="uid://cr2crs5tmcekg"]
 
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bf27vwrjjc8bq" path="res://submarine/submarine_init.gd" id="3_5vw27"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://hktbh6i7wskp" path="res://submarine/sonar/sonar.tscn" id="5_272bh"]
 [ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://chrhy7caxi145" path="res://submarine/submarine_postinit.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://uxp5tpmomrff" path="res://submarine/reactor/reactor.tscn" id="7_272bh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
@@ -45,9 +46,10 @@ environment = SubResource("Environment_ig7tw")
 
 [node name="Submarine" type="Node3D" parent="."]
 
-[node name="Init" type="Node" parent="Submarine" node_paths=PackedStringArray("reactor")]
+[node name="Init" type="Node" parent="Submarine" node_paths=PackedStringArray("reactor", "light")]
 script = ExtResource("3_5vw27")
 reactor = NodePath("../Reactor")
+light = NodePath("../MainLight")
 
 [node name="Hull" type="MeshInstance3D" parent="Submarine"]
 mesh = ExtResource("3_kek77")
@@ -57,7 +59,9 @@ skeleton = NodePath("../../root/@EditorNode@21273/@Panel@14/@VBoxContainer@15/Do
 
 [node name="Sonar" parent="Submarine" instance=ExtResource("5_272bh")]
 
-[node name="MainLight" parent="." instance=ExtResource("4_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.315, 0)
+[node name="MainLight" parent="Submarine" instance=ExtResource("4_1bvp3")]
+
+[node name="PostInit" type="Node" parent="Submarine"]
+script = ExtResource("7_5vw27")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]

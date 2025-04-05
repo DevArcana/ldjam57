@@ -17,7 +17,7 @@ func refresh_visuals() -> void:
 		else:
 			power_indicator.set_diode(i, Indicator.DiodeColor.OFF)
 	
-	max_heat = Submarine.power_generated * 2 + Submarine.power_available + Submarine.external_heat_mod
+	max_heat = max(Submarine.power_generated * 2 + Submarine.power_available + Submarine.external_heat_mod, 0)
 	
 	for i in heat_indicator.diode_count:
 		if i < heat:

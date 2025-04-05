@@ -2,6 +2,7 @@ extends Node
 
 #region Systems
 var reactor: SubmarineReactor
+var light: SubmarineLight
 #endregion
 
 #region Power
@@ -63,10 +64,14 @@ var external_heat_mod: int = -20
 
 #endregion
 
+func _tick() -> void:
+	reactor.tick()
+	light.tick()
+
 var timer := 0.0
 const TIME_PER_TICK := 1.0
 func _physics_process(delta: float) -> void:
 	timer += delta
 	if timer > TIME_PER_TICK:
 		timer = 0.0
-		reactor.tick()
+		_tick()

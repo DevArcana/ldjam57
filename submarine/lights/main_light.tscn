@@ -1,11 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0qbjern60f03"]
+[gd_scene load_steps=5 format=3 uid="uid://c0qbjern60f03"]
 
 [ext_resource type="Script" uid="uid://c01j1175nkttp" path="res://submarine/lights/main_light.gd" id="1_anq8t"]
+[ext_resource type="ArrayMesh" uid="uid://dd41wsyjjjqq4" path="res://assets/models/submarine/light.res" id="1_ghvw5"]
 [ext_resource type="AudioStream" uid="uid://c8xyjytjq4r5a" path="res://assets/sounds/alarm.mp3" id="2_tx4pa"]
+[ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch.tscn" id="4_jp351"]
 
-[node name="MainLight" type="OmniLight3D" node_paths=PackedStringArray("alarm")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("alarm", "light")]
 script = ExtResource("1_anq8t")
-alarm = NodePath("AudioStreamPlayer3D")
+alarm = NodePath("Light/AudioStreamPlayer3D")
+light = NodePath("Light")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ghvw5")
+skeleton = NodePath("../Light")
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01178, -1.42591)
+light_size = 1.0
+light_specular = 0.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Light"]
 stream = ExtResource("2_tx4pa")
+
+[node name="ToggleSwitch" parent="." instance=ExtResource("4_jp351")]
+transform = Transform3D(1, 0, 0, 0, -0.993538, -0.113498, 0, 0.113498, -0.993538, 0.209639, 2.41416, -1.48155)
+
+[connection signal="toggled_off" from="ToggleSwitch" to="." method="enable"]
+[connection signal="toggled_on" from="ToggleSwitch" to="." method="disable"]
