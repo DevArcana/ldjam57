@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cfh48l5ulbs25"]
+
+[ext_resource type="Texture2D" uid="uid://cwlnkdimm1460" path="res://assets/textures/metal_light.png" id="1_bnd00"]
+
+[resource]
+albedo_texture = ExtResource("1_bnd00")
+texture_filter = 0

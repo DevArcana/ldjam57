@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bm308egkfr4vm" path="res://submarine/reactor/reactor.gd" id="1_ricsu"]
 [ext_resource type="PackedScene" uid="uid://d3cr5k8t8k7lg" path="res://assets/models/reactor.glb" id="1_v43w7"]
 [ext_resource type="Material" uid="uid://dcjtmhebcr1is" path="res://assets/materials/indicator_red.tres" id="3_gyxkp"]
-[ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch/toggle_switch.tscn" id="4_05wb6"]
+[ext_resource type="PackedScene" uid="uid://ctdwnh8tu38wm" path="res://switches/button.tscn" id="4_05wb6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v43w7"]
 size = Vector3(1.39172, 2.49222, 2.25858)
@@ -102,13 +102,13 @@ amount = 512
 process_material = SubResource("ParticleProcessMaterial_v43w7")
 draw_pass_1 = SubResource("SphereMesh_gyxkp")
 
-[node name="ToggleSwitch" parent="." instance=ExtResource("4_05wb6")]
-transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.0260692, 0.334672, 0.484503)
+[node name="Button" parent="." instance=ExtResource("4_05wb6")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0189644, 0.426351, 0.400279)
 
-[node name="ToggleSwitch2" parent="." instance=ExtResource("4_05wb6")]
-transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.0260692, 0.334672, 0.335617)
+[node name="Button2" parent="." instance=ExtResource("4_05wb6")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0189644, 0.269634, 0.402775)
 
-[connection signal="toggled_on" from="ToggleSwitch" to="." method="inc_power"]
-[connection signal="toggled_on" from="ToggleSwitch2" to="." method="dec_power"]
+[connection signal="pressed" from="Button" to="." method="inc_power"]
+[connection signal="pressed" from="Button2" to="." method="dec_power"]
 
 [editable path="Mesh"]

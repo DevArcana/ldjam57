@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://1bkck3dplq7p"
-path="res://.godot/imported/toggle_switch.glb-0e1fb0db9906f40b44b1bb84559df23e.scn"
+uid="uid://ksgb4av8cgej"
+path="res://.godot/imported/button.glb-bfe900ef1911d2694344766c72db7a85.scn"
 
 [deps]
 
-source_file="res://assets/models/toggle_switch.glb"
-dest_files=["res://.godot/imported/toggle_switch.glb-0e1fb0db9906f40b44b1bb84559df23e.scn"]
+source_file="res://assets/models/button.glb"
+dest_files=["res://.godot/imported/button.glb-bfe900ef1911d2694344766c72db7a85.scn"]
 
 [params]
 
