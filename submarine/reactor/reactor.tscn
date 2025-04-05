@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://uxp5tpmomrff"]
+[gd_scene load_steps=14 format=3 uid="uid://uxp5tpmomrff"]
 
 [ext_resource type="Script" uid="uid://bm308egkfr4vm" path="res://submarine/reactor/reactor.gd" id="1_ricsu"]
 [ext_resource type="PackedScene" uid="uid://d3cr5k8t8k7lg" path="res://assets/models/reactor.glb" id="1_v43w7"]
 [ext_resource type="Material" uid="uid://dcjtmhebcr1is" path="res://assets/materials/indicator_red.tres" id="3_gyxkp"]
 [ext_resource type="PackedScene" uid="uid://ctdwnh8tu38wm" path="res://switches/button.tscn" id="4_05wb6"]
+[ext_resource type="PackedScene" uid="uid://bh20ok1tkb0kb" path="res://submarine/reactor/indicator.tscn" id="4_ilotv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v43w7"]
 size = Vector3(1.39172, 2.49222, 2.25858)
@@ -52,10 +53,10 @@ height = 0.02
 radial_segments = 8
 rings = 2
 
-[node name="Reactor" type="StaticBody3D" node_paths=PackedStringArray("heat_indicators", "value_indicators", "particles")]
+[node name="Reactor" type="StaticBody3D" node_paths=PackedStringArray("power_indicator", "heat_indicator", "particles")]
 script = ExtResource("1_ricsu")
-heat_indicators = [NodePath("Mesh/HeatD1"), NodePath("Mesh/HeatD2"), NodePath("Mesh/HeatD3"), NodePath("Mesh/HeatD4"), NodePath("Mesh/HeatD5")]
-value_indicators = [NodePath("Mesh/PowerD1"), NodePath("Mesh/PowerD2"), NodePath("Mesh/PowerD3"), NodePath("Mesh/PowerD4"), NodePath("Mesh/PowerD5")]
+power_indicator = NodePath("PowerIndicator")
+heat_indicator = NodePath("HeatIndicator")
 particles = NodePath("GPUParticles3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -66,34 +67,64 @@ shape = SubResource("BoxShape3D_v43w7")
 [node name="Mesh" parent="." instance=ExtResource("1_v43w7")]
 
 [node name="HeatD1" parent="Mesh" index="4"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="HeatD2" parent="Mesh" index="5"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="HeatD3" parent="Mesh" index="6"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="HeatD4" parent="Mesh" index="7"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="HeatD5" parent="Mesh" index="8"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="PowerD1" parent="Mesh" index="9"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="PowerD2" parent="Mesh" index="10"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="PowerD3" parent="Mesh" index="11"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="PowerD4" parent="Mesh" index="12"]
+visible = false
 material_override = ExtResource("3_gyxkp")
 
 [node name="PowerD5" parent="Mesh" index="13"]
+visible = false
 material_override = ExtResource("3_gyxkp")
+
+[node name="Label3D" type="Label3D" parent="Mesh"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0736182, 0.575627, 0.471599)
+pixel_size = 0.0003
+text = "Power"
+font_size = 64
+outline_size = 0
+
+[node name="Label3D2" type="Label3D" parent="Mesh"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0736182, 0.575627, -0.0762658)
+pixel_size = 0.0003
+text = "Heat"
+font_size = 64
+outline_size = 0
+
+[node name="PowerIndicator" parent="." instance=ExtResource("4_ilotv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0713496, 0.599, 0.392483)
+
+[node name="HeatIndicator" parent="." instance=ExtResource("4_ilotv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0713496, 0.599, -0.137016)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.632037, 0.269469, -0.466308)

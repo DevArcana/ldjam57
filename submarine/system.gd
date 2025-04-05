@@ -10,3 +10,7 @@ func power_unit_drained() -> void:
 ## Including when consume_power_unit was called.
 func power_unit_provided() -> void:
 	pass
+
+## Called every ship tick.
+func tick() -> void:
+	pass

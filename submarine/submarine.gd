@@ -56,3 +56,19 @@ func release_power_unit(system: SubmarineSystem) -> bool:
 	
 	return false
 #endregion
+
+#region Heat
+
+## Amount of power units offset by external heat, -20 means that at 10 power gen and zero free units, the reactor won't heat up.
+var external_heat_mod: int = -20
+
+#endregion
+
+var timer := 0.0
+const TIME_PER_TICK := 1.0
+func _physics_process(delta: float) -> void:
+	timer += delta
+	if timer > TIME_PER_TICK:
+		timer = 0.0
+		reactor.tick()
+		cooling.tick()

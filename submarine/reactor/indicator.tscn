@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh20ok1tkb0kb"]
+
+[ext_resource type="Script" uid="uid://beqpe5gcfdepn" path="res://submarine/reactor/indicator.gd" id="1_hxdso"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_05wb6"]
+radius = 0.01
+height = 0.02
+radial_segments = 8
+rings = 2
+
+[node name="PowerIndicators" type="Node3D"]
+script = ExtResource("1_hxdso")
+
+[node name="1" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, -0.09)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, -0.12)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="13" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.09)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="15" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.12)
+mesh = SubResource("SphereMesh_05wb6")

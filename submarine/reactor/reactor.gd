@@ -1,34 +1,42 @@
 extends SubmarineSystem
 class_name SubmarineReactor
 
-# Reactor produces units of power.
-# Each produced unit of power generates 2 units of heat.
-# Each unused unit of power produces additioanl unit of heat.
-
-@export var heat_indicators: Array[MeshInstance3D]
-@export var value_indicators: Array[MeshInstance3D]
+@export var power_indicator: Indicator
+@export var heat_indicator: Indicator
 @export var particles: GPUParticles3D
 
-const material_red: Material = preload("res://assets/materials/indicator_red.tres")
-const material_green: Material = preload("res://assets/materials/indicator_green.tres")
-const material_blue: Material = preload("res://assets/materials/indicator_blue.tres")
-const material_off: Material = preload("res://assets/materials/indicator_off.tres")
+var heat: int = 0
+var max_heat: int = 0
 
 func refresh_visuals() -> void:
-	for i in len(heat_indicators):
-		heat_indicators[i].material_override = material_off
-	
-	for i in len(value_indicators):
-		if i < Submarine.power_generated:
-			if i < Submarine.power_consumed:
-				value_indicators[i].material_override = material_green
-			else:
-				value_indicators[i].material_override = material_blue
+	for i in power_indicator.diode_count:
+		if i < Submarine.power_consumed:
+			power_indicator.set_diode(i, Indicator.DiodeColor.GREEN)
+		elif i < Submarine.power_generated:
+			power_indicator.set_diode(i, Indicator.DiodeColor.BLUE)
 		else:
-			value_indicators[i].material_override = material_off
+			power_indicator.set_diode(i, Indicator.DiodeColor.OFF)
 	
-	var amt := Submarine.power_generated / float(len(value_indicators))
+	max_heat = Submarine.power_generated * 2 + Submarine.power_available + Submarine.external_heat_mod
+	
+	for i in heat_indicator.diode_count:
+		if i < heat:
+			heat_indicator.set_diode(i, Indicator.DiodeColor.RED)
+		elif i < max_heat:
+			heat_indicator.set_diode(i, Indicator.DiodeColor.BLUE)
+		else:
+			heat_indicator.set_diode(i, Indicator.DiodeColor.OFF)
+	
+	var amt := Submarine.power_generated / float(power_indicator.diode_count)
 	particles.amount_ratio = amt
+
+func tick() -> void:
+	if heat < max_heat:
+		heat += 1
+	elif heat > max_heat:
+		heat -= 1
+	
+	refresh_visuals()
 
 func _ready() -> void:
 	refresh_visuals()
@@ -36,7 +44,7 @@ func _ready() -> void:
 	Submarine.power_unit_released.connect(refresh_visuals)
 
 func inc_value() -> void:
-	if Submarine.power_generated < len(value_indicators):
+	if Submarine.power_generated < power_indicator.diode_count:
 		Submarine.power_generated += 1
 	refresh_visuals()
 
