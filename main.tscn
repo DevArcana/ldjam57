@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=10 format=3 uid="uid://cr2crs5tmcekg"]
 
+[ext_resource type="Script" uid="uid://h26n30qtliws" path="res://submarine/submarine.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://idtd26kvi8kl" path="res://assets/models/submarine.glb" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch/toggle_switch.tscn" id="3_h2yge"]
@@ -26,6 +27,7 @@ background_mode = 1
 tonemap_mode = 3
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_272bh")
 
 [node name="RetroPostProcessing" type="ColorRect" parent="."]
 process_mode = 4
