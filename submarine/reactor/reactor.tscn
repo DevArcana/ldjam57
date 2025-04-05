@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://uxp5tpmomrff"]
+
+[ext_resource type="Script" uid="uid://bm308egkfr4vm" path="res://submarine/reactor/reactor.gd" id="1_ricsu"]
+[ext_resource type="PackedScene" uid="uid://d3cr5k8t8k7lg" path="res://assets/models/reactor.glb" id="1_v43w7"]
+[ext_resource type="Material" uid="uid://dcjtmhebcr1is" path="res://assets/materials/indicator_red.tres" id="3_gyxkp"]
+[ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch/toggle_switch.tscn" id="4_05wb6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v43w7"]
+size = Vector3(1.39172, 2.49222, 2.25858)
+
+[sub_resource type="Curve" id="Curve_v43w7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.399015, 0.501887), 0.0, 0.0, 0, 0, Vector2(0.876847, 0.690566), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ricsu"]
+curve = SubResource("Curve_v43w7")
+
+[sub_resource type="Gradient" id="Gradient_gyxkp"]
+interpolation_mode = 2
+colors = PackedColorArray(0.865992, 0.695793, 3.85046e-07, 1, 0.724975, 0.119489, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_05wb6"]
+gradient = SubResource("Gradient_gyxkp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v43w7"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 2.0
+emission_ring_radius = 0.5
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -20.69
+radial_accel_max = -20.69
+tangential_accel_min = -100.0
+tangential_accel_max = -100.0
+damping_min = 100.0
+damping_max = 100.0
+color_ramp = SubResource("GradientTexture1D_05wb6")
+alpha_curve = SubResource("CurveTexture_ricsu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilotv"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_gyxkp"]
+material = SubResource("StandardMaterial3D_ilotv")
+radius = 0.01
+height = 0.02
+radial_segments = 8
+rings = 2
+
+[node name="Reactor" type="StaticBody3D" node_paths=PackedStringArray("heat_indicators", "power_indicators", "particles")]
+script = ExtResource("1_ricsu")
+heat_indicators = [NodePath("Mesh/HeatD1"), NodePath("Mesh/HeatD2"), NodePath("Mesh/HeatD3"), NodePath("Mesh/HeatD4"), NodePath("Mesh/HeatD5")]
+power_indicators = [NodePath("Mesh/PowerD1"), NodePath("Mesh/PowerD2"), NodePath("Mesh/PowerD3"), NodePath("Mesh/PowerD4"), NodePath("Mesh/PowerD5")]
+particles = NodePath("GPUParticles3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.726501, 0.271253, -0.0771365)
+visible = false
+shape = SubResource("BoxShape3D_v43w7")
+
+[node name="Mesh" parent="." instance=ExtResource("1_v43w7")]
+
+[node name="HeatD1" parent="Mesh" index="4"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="HeatD2" parent="Mesh" index="5"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="HeatD3" parent="Mesh" index="6"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="HeatD4" parent="Mesh" index="7"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="HeatD5" parent="Mesh" index="8"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="PowerD1" parent="Mesh" index="9"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="PowerD2" parent="Mesh" index="10"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="PowerD3" parent="Mesh" index="11"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="PowerD4" parent="Mesh" index="12"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="PowerD5" parent="Mesh" index="13"]
+material_override = ExtResource("3_gyxkp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.632037, 0.269469, -0.466308)
+cast_shadow = 0
+amount = 512
+process_material = SubResource("ParticleProcessMaterial_v43w7")
+draw_pass_1 = SubResource("SphereMesh_gyxkp")
+
+[node name="ToggleSwitch" parent="." instance=ExtResource("4_05wb6")]
+transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.0260692, 0.334672, 0.484503)
+
+[node name="ToggleSwitch2" parent="." instance=ExtResource("4_05wb6")]
+transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.0260692, 0.334672, 0.335617)
+
+[connection signal="toggled_on" from="ToggleSwitch" to="." method="inc_power"]
+[connection signal="toggled_on" from="ToggleSwitch2" to="." method="dec_power"]
+
+[editable path="Mesh"]

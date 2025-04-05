@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=10 format=3 uid="uid://cr2crs5tmcekg"]
 
-[ext_resource type="Script" path="res://submarine/submarine.gd" id="1_272bh"]
+[ext_resource type="Script" uid="uid://h26n30qtliws" path="res://submarine/submarine.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://idtd26kvi8kl" path="res://assets/models/submarine.glb" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch/toggle_switch.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://1raoo6hvdfs4" path="res://assets/models/sonar.glb" id="5_lquwl"]
 [ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://d3cr5k8t8k7lg" path="res://assets/models/reactor.glb" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://uxp5tpmomrff" path="res://submarine/reactor/reactor.tscn" id="7_272bh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
 shader = ExtResource("6_7mycd")
@@ -26,12 +25,13 @@ shader_parameter/lens_distortion_strength = 0.001
 [sub_resource type="Environment" id="Environment_ig7tw"]
 background_mode = 1
 tonemap_mode = 3
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_272bh")
 
 [node name="RetroPostProcessing" type="ColorRect" parent="."]
 process_mode = 4
+visible = false
 material = SubResource("ShaderMaterial_272bh")
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,11 +44,9 @@ mouse_filter = 2
 environment = SubResource("Environment_ig7tw")
 
 [node name="Submarine" parent="." instance=ExtResource("1_ig7tw")]
+script = ExtResource("1_272bh")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
-
-[node name="ToggleSwitch" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.46338, -3)
 
 [node name="MainLight" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.315, 0)
@@ -56,8 +54,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.315, 0)
 [node name="sonar" parent="." instance=ExtResource("5_lquwl")]
 transform = Transform3D(0.033975, 0, 0.999423, 0, 1, 0, -0.999423, 0, 0.033975, 0.0178615, 1.55659, 2.45176)
 
-[node name="reactor" parent="." instance=ExtResource("8_5vw27")]
-transform = Transform3D(-0.00174539, 0, -0.999998, 0, 1, 0, 0.999998, 0, -0.00174539, -0.101293, 0.931985, -1.63058)
-
-[connection signal="toggled_off" from="ToggleSwitch" to="MainLight" method="disable_alarm"]
-[connection signal="toggled_on" from="ToggleSwitch" to="MainLight" method="enable_alarm"]
+[node name="Reactor" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.202751, 1, -1.60924)

@@ -6,4 +6,5 @@ var oxygen := 0
 var temperature := 0
 
 func _ready() -> void:
+	print("hello from sub")
 	Global.submarine = self
