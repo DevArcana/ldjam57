@@ -39,16 +39,14 @@ damping_max = 100.0
 color_ramp = SubResource("GradientTexture1D_05wb6")
 alpha_curve = SubResource("CurveTexture_ricsu")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilotv"]
-transparency = 1
-shading_mode = 0
-diffuse_mode = 3
-disable_ambient_light = true
-disable_fog = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05wb6"]
 vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.927395, 0.589808, 7.70092e-07, 1)
+emission_energy_multiplier = 256.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_gyxkp"]
-material = SubResource("StandardMaterial3D_ilotv")
+material = SubResource("StandardMaterial3D_05wb6")
 radius = 0.01
 height = 0.02
 radial_segments = 8
