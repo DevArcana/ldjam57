@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bto5evvfiuwh1"]
+
+[ext_resource type="Script" uid="uid://ddusbandak07o" path="res://switches/toggle_switch/toggle_switch.gd" id="1_h6ad1"]
+[ext_resource type="PackedScene" uid="uid://1bkck3dplq7p" path="res://assets/models/toggle_switch.glb" id="1_wpoi0"]
+[ext_resource type="AudioStream" uid="uid://cpgvt145e2dhk" path="res://assets/sounds/flick.mp3" id="3_g5yq5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h6ad1"]
+height = 0.1
+radius = 0.1
+
+[node name="ToggleSwitch" type="StaticBody3D" node_paths=PackedStringArray("meshes", "flick", "audio")]
+script = ExtResource("1_h6ad1")
+meshes = [NodePath("Mesh/ToggleSwitchBase"), NodePath("Mesh/ToggleSwitchFlick")]
+flick = NodePath("Mesh/ToggleSwitchFlick")
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_h6ad1")
+
+[node name="Mesh" parent="." instance=ExtResource("1_wpoi0")]
+
+[node name="ToggleSwitchFlick" parent="Mesh" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_g5yq5")
+
+[editable path="Mesh"]

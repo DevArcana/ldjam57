@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=6 format=3 uid="uid://cr2crs5tmcekg"]
 
 [ext_resource type="PackedScene" uid="uid://idtd26kvi8kl" path="res://assets/models/submarine.glb" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch/toggle_switch.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 background_mode = 1
@@ -12,9 +14,15 @@ tonemap_mode = 3
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ig7tw")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29095, 0)
-
 [node name="Submarine" parent="." instance=ExtResource("1_ig7tw")]
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="ToggleSwitch" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.46338, -3)
+
+[node name="MainLight" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.315, 0)
+
+[connection signal="toggled_off" from="ToggleSwitch" to="MainLight" method="disable_alarm"]
+[connection signal="toggled_on" from="ToggleSwitch" to="MainLight" method="enable_alarm"]
