@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=7 format=3 uid="uid://cr2crs5tmcekg"]
 
 [ext_resource type="PackedScene" uid="uid://idtd26kvi8kl" path="res://assets/models/submarine.glb" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch/toggle_switch.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://1raoo6hvdfs4" path="res://assets/models/sonar.glb" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 background_mode = 1
@@ -23,6 +24,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.4
 
 [node name="MainLight" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.315, 0)
+
+[node name="sonar" parent="." instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.033975, 0, 0.999423, 0, 1, 0, -0.999423, 0, 0.033975, 0.0178615, 1.55659, 2.45176)
 
 [connection signal="toggled_off" from="ToggleSwitch" to="MainLight" method="disable_alarm"]
 [connection signal="toggled_on" from="ToggleSwitch" to="MainLight" method="enable_alarm"]
