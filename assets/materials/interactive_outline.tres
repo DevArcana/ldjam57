@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://h24evfm12fls"]
+
+[ext_resource type="Shader" uid="uid://ds6y6715dweo1" path="res://assets/shaders/spatial_outline.gdshader" id="1_qcohf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qcohf")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 5.0
+shader_parameter/fade_start = 10.0
+shader_parameter/fade_end = 30.0

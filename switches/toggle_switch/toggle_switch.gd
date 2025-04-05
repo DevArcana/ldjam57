@@ -7,7 +7,7 @@ extends StaticBody3D
 signal toggled_on
 signal toggled_off
 
-const highlight_material: Material = preload("res://assets/materials/interactive_highlight.tres")
+const highlight_material: Material = preload("res://assets/materials/interactive_outline.tres")
 
 var focused := false
 var toggle_state := false

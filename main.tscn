@@ -1,16 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=9 format=3 uid="uid://cr2crs5tmcekg"]
 
 [ext_resource type="PackedScene" uid="uid://idtd26kvi8kl" path="res://assets/models/submarine.glb" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch/toggle_switch.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://1raoo6hvdfs4" path="res://assets/models/sonar.glb" id="5_lquwl"]
+[ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="6_7mycd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
+shader = ExtResource("6_7mycd")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 1024.0
+shader_parameter/grainIntensity = 0.0
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.001
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 background_mode = 1
 tonemap_mode = 3
 
 [node name="Main" type="Node3D"]
+
+[node name="RetroPostProcessing" type="ColorRect" parent="."]
+process_mode = 4
+material = SubResource("ShaderMaterial_272bh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ig7tw")
