@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://hktbh6i7wskp" path="res://submarine/sonar/sonar.tscn" id="5_272bh"]
 [ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="6_7mycd"]
-[ext_resource type="Script" uid="uid://chrhy7caxi145" path="res://submarine/submarine_postinit.gd" id="7_5vw27"]
+[ext_resource type="Script" path="res://submarine/submarine_postinit.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://uxp5tpmomrff" path="res://submarine/reactor/reactor.tscn" id="7_272bh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
