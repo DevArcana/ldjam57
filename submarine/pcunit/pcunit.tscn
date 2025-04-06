@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cs4r1q5yx6x03"]
 
-[ext_resource type="Script" uid="uid://defmwtnuwrn7p" path="res://submarine/pcunit/pcunit.gd" id="1_523tx"]
+[ext_resource type="Script" path="res://submarine/pcunit/pcunit.gd" id="1_523tx"]
 [ext_resource type="ArrayMesh" uid="uid://c5jlgedohpnj2" path="res://assets/models/submarine/pcunit.res" id="1_uvqyv"]
 [ext_resource type="PackedScene" uid="uid://bjbj8sb4e3apn" path="res://submarine/pcunit/pc_screen.tscn" id="2_q8ycg"]
 

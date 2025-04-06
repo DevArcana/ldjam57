@@ -76,6 +76,22 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/path": "res://assets/models/submarine/pcunit.res"
 },
+"submarine_Phob": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/submarine/phob.res"
+},
+"submarine_Phob2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/submarine/phob2.res"
+},
 "submarine_Reactor": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
@@ -83,6 +99,14 @@ _subresources={
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
 "save_to_file/path": "res://assets/models/submarine/reactor.res"
+},
+"submarine_SliderBase": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/submarine/sliderbase.res"
 },
 "submarine_Sonar": {
 "generate/lightmap_uv": 0,
