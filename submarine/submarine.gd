@@ -4,6 +4,7 @@ extends Node
 var reactor: SubmarineReactor
 var light: SubmarineLight
 var life_support: SubmarineLifeSupport
+var submarine2d: Submarine2D
 #endregion
 
 #region Power

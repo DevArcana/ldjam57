@@ -1,27 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://hktbh6i7wskp"]
+[gd_scene load_steps=4 format=3 uid="uid://hktbh6i7wskp"]
 
 [ext_resource type="Script" uid="uid://mk3y14nginif" path="res://submarine/sonar/sonar.gd" id="1_fkvl0"]
 [ext_resource type="ArrayMesh" uid="uid://4opy81oju6ix" path="res://assets/models/submarine/sonar.res" id="1_vc4sm"]
-[ext_resource type="Script" uid="uid://lq57fmwlix4o" path="res://submarine/sonar/display.gd" id="3_xov00"]
-[ext_resource type="Script" uid="uid://0jxnvqdviroh" path="res://submarine/sonar/depths_map.gd" id="4_iagkn"]
+[ext_resource type="PackedScene" uid="uid://bst4bo5wehts3" path="res://ocean/ocean.tscn" id="3_xov00"]
 
 [node name="Sonar" type="Node3D" node_paths=PackedStringArray("viewport", "displayMesh")]
 script = ExtResource("1_fkvl0")
 viewport = NodePath("DisplayViewport")
 displayMesh = NodePath("Sonar")
 
-[node name="DepthsMap" type="Node" parent="."]
-script = ExtResource("4_iagkn")
+[node name="DisplayViewport" type="SubViewport" parent="."]
+disable_3d = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(256, 256)
+
+[node name="Display" parent="DisplayViewport" instance=ExtResource("3_xov00")]
 
 [node name="Sonar" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_vc4sm")
-
-[node name="DisplayViewport" type="SubViewport" parent="."]
-
-[node name="Background" type="Panel" parent="DisplayViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Display" type="Node2D" parent="DisplayViewport" node_paths=PackedStringArray("depths_map")]
-script = ExtResource("3_xov00")
-depths_map = NodePath("../../DepthsMap")

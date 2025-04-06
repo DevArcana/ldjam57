@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bst4bo5wehts3"]
+
+[ext_resource type="PackedScene" uid="uid://dpjovvdqybe5c" path="res://ocean/submarine.tscn" id="1_jlsjl"]
+[ext_resource type="PackedScene" uid="uid://5a8puc34brfr" path="res://ocean/rock.tscn" id="2_e15e0"]
+
+[node name="Display" type="Node2D"]
+
+[node name="Submarine" parent="." instance=ExtResource("1_jlsjl")]
+
+[node name="Rock" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(58, 0)
+
+[node name="Rock2" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(26, -116)
+
+[node name="Rock3" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(-66, -87)
+
+[node name="Rock4" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(-134, -21)
+
+[node name="Rock5" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(-71, 63)
+
+[node name="Rock6" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(46, 95)
+
+[node name="Rock7" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(122, 57)
+
+[node name="Rock8" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(102, -87)
+
+[node name="Rock9" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(-64, -179)
+
+[node name="Rock10" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(-133, -118)
+
+[node name="Rock11" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(-154, 61)
+
+[node name="Rock12" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(225, -47)
+
+[node name="Rock13" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(158, -175)
+
+[node name="Rock14" parent="." instance=ExtResource("2_e15e0")]
+position = Vector2(39, -200)
