@@ -97,7 +97,7 @@ func _physics_process(delta: float) -> void:
 func restart_game() -> void:
 	# I HATE THIS CODE
 	# Note to myself to never use autoload scripts for global state like this.
-	oxygen = 10
+	oxygen = 18
 	external_heat_mod = -20
 	_power_generated = 0
 	_power_consumed_units = []

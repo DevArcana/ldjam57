@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/alert_oxygen_low.mp3-c38e2629ec72165a2de91d81
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

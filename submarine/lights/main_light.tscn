@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0qbjern60f03"]
+[gd_scene load_steps=6 format=3 uid="uid://c0qbjern60f03"]
 
 [ext_resource type="Script" uid="uid://c01j1175nkttp" path="res://submarine/lights/main_light.gd" id="1_anq8t"]
 [ext_resource type="ArrayMesh" uid="uid://rktgts86kqxo" path="res://assets/models/submarine/light.res" id="1_ghvw5"]
 [ext_resource type="AudioStream" uid="uid://cxs18lfinmntr" path="res://assets/sounds/alert_reactor_overheating.mp3" id="3_jp351"]
+[ext_resource type="AudioStream" uid="uid://do5el6tkfw40b" path="res://assets/sounds/alert_oxygen_low.mp3" id="4_b5r4k"]
 [ext_resource type="PackedScene" uid="uid://bto5evvfiuwh1" path="res://switches/toggle_switch.tscn" id="4_jp351"]
 
-[node name="Lights" type="Node3D" node_paths=PackedStringArray("alarm", "light")]
+[node name="Lights" type="Node3D" node_paths=PackedStringArray("alarm_reactor", "alarm_oxygen", "light")]
 script = ExtResource("1_anq8t")
-alarm = NodePath("Light/AlertReactorOverheat")
+alarm_reactor = NodePath("Light/AlertReactorOverheat")
+alarm_oxygen = NodePath("Light/AlertOxygenLow")
 light = NodePath("Light")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
@@ -21,6 +23,9 @@ light_specular = 0.0
 
 [node name="AlertReactorOverheat" type="AudioStreamPlayer3D" parent="Light"]
 stream = ExtResource("3_jp351")
+
+[node name="AlertOxygenLow" type="AudioStreamPlayer3D" parent="Light"]
+stream = ExtResource("4_b5r4k")
 
 [node name="ToggleSwitch" parent="." instance=ExtResource("4_jp351")]
 transform = Transform3D(1, 0, 0, 0, -0.993538, -0.113498, 0, 0.113498, -0.993538, 0.209639, 2.41416, -1.48155)

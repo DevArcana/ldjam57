@@ -1,7 +1,8 @@
 extends SubmarineSystem
 class_name SubmarineLight
 
-@export var alarm: AudioStreamPlayer3D
+@export var alarm_reactor: AudioStreamPlayer3D
+@export var alarm_oxygen: AudioStreamPlayer3D
 @export var light: OmniLight3D
 
 enum Mode {
@@ -19,7 +20,8 @@ var mode: Mode:
 			return
 		
 		if _mode == Mode.ALARM:
-			alarm.stop()
+			alarm_reactor.stop()
+			alarm_oxygen.stop()
 		
 		_mode = m
 		
@@ -32,7 +34,6 @@ var mode: Mode:
 		elif m == Mode.ALARM:
 			light.light_energy = 1.0
 			light.light_color = Color.RED
-			alarm.play()
 
 var enabled: bool = false
 
@@ -68,9 +69,19 @@ func _process(delta: float) -> void:
 	else:
 		timer = 0.0
 
+var is_reactor_overheating := false
+var is_oxygen_low := false
+
 func tick() -> void:
+	is_reactor_overheating = Submarine.reactor.max_heat >= Submarine.reactor.MAX_TOTAL_HEAT
+	is_oxygen_low = Submarine.oxygen < 18
+	
 	if mode != Mode.OFF:
-		if Submarine.reactor.max_heat >= Submarine.reactor.MAX_TOTAL_HEAT:
+		if is_reactor_overheating or is_oxygen_low:
 			mode = Mode.ALARM
+			if is_reactor_overheating and not alarm_reactor.playing:
+				alarm_reactor.play()
+			if is_oxygen_low and not alarm_oxygen.playing:
+				alarm_oxygen.play()
 		else:
 			mode = Mode.POWERED
