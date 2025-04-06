@@ -12,9 +12,8 @@ mesh = ExtResource("1_nacdn")
 
 [node name="Phob2" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_xxt7b")
+script = ExtResource("4_mfxw3")
 
 [node name="Phob" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19177, -0.351033)
 mesh = ExtResource("3_mfxw3")
 script = ExtResource("4_mfxw3")
-offset_max_abs = null
