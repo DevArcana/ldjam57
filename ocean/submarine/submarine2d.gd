@@ -15,7 +15,7 @@ var sonar_power: int:
 		_sonar_power = value
 		sonar_speed = float(value)
 		
-		var sonar_len := 16 * pow(2, value)
+		var sonar_len := 16.0 * pow(2, value)
 		scanner_mesh.mesh.size.y = sonar_len
 		scanner_mesh.position.y = -(sonar_len/2)
 		scanner_collider.shape.size.y = sonar_len
