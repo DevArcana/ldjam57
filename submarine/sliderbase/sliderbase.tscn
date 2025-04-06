@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm1vw64whblha"]
+[gd_scene load_steps=8 format=3 uid="uid://bm1vw64whblha"]
 
 [ext_resource type="ArrayMesh" uid="uid://neb0lapouprs" path="res://assets/models/submarine/sliderbase.res" id="1_nacdn"]
 [ext_resource type="ArrayMesh" uid="uid://dxaqshynif26v" path="res://assets/models/submarine/phob.res" id="3_mfxw3"]
 [ext_resource type="Script" uid="uid://dxfhfenqw7da0" path="res://submarine/sliderbase/phob.gd" id="4_mfxw3"]
-[ext_resource type="ArrayMesh" uid="uid://cy1v5mniviv8l" path="res://assets/models/submarine/torus.res" id="4_uamcf"]
+[ext_resource type="Script" uid="uid://cym8w32vpdaui" path="res://submarine/sliderbase/torus.gd" id="4_s05kf"]
+[ext_resource type="ArrayMesh" uid="uid://dsvhgm275w2ml" path="res://assets/models/submarine/torus.res" id="4_uamcf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s05kf"]
 size = Vector3(0.188965, 0.101318, 0.0820313)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ui1xu"]
+size = Vector3(0.199707, 0.0339508, 0.196167)
 
 [node name="Sliderbase" type="Node3D"]
 
@@ -29,5 +33,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.439955, -0.921789, 2.46201)
 mesh = ExtResource("3_mfxw3")
 skeleton = NodePath("../..")
 
-[node name="Torus" type="MeshInstance3D" parent="."]
+[node name="TorusBody" type="StaticBody3D" parent="." node_paths=PackedStringArray("meshes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77099, -2.16194)
+collision_layer = 2
+script = ExtResource("4_s05kf")
+meshes = [NodePath("Torus")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TorusBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00219727, -0.000993013, 0.000750542)
+shape = SubResource("BoxShape3D_ui1xu")
+
+[node name="Torus" type="MeshInstance3D" parent="TorusBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.77099, 2.16194)
 mesh = ExtResource("4_uamcf")
+skeleton = NodePath("../..")
