@@ -68,7 +68,7 @@ var external_heat_mod: int = -20
 #region Oxygen
 
 ## Number of oxygen units. At zero the player dies. Max is 36.
-var oxygen: int = 32
+var oxygen: int = 18
 const MAX_OXYGEN: int = 36
 
 #endregion
