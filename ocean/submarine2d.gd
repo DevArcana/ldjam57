@@ -7,5 +7,6 @@ var horizontal: int = 0
 func _ready() -> void:
 	Submarine.submarine2d = self
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	apply_force(Vector2(horizontal, vertical).rotated(rotation))
+	Events.depth_changed.emit()

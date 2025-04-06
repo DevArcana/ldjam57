@@ -1,12 +1,17 @@
-[gd_scene load_steps=0 format=3 uid="uid://bjbj8sb4e3apn"]
+[gd_scene load_steps=2 format=3 uid="uid://bjbj8sb4e3apn"]
 
-[node name="PCScreen" type="Control"]
+[ext_resource type="Script" uid="uid://dc81ssc5emvpj" path="res://submarine/pcunit/pc_screen.gd" id="1_ypg20"]
+
+[node name="PCScreen" type="Control" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ypg20")
+label = NodePath("ColorRect/Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -24,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Depth: 0m"
+text = "Depth [m]
+0"
 horizontal_alignment = 1
 vertical_alignment = 1
