@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bjbj8sb4e3apn"]
+[gd_scene load_steps=0 format=3 uid="uid://bjbj8sb4e3apn"]
 
 [node name="PCScreen" type="Control"]
 layout_mode = 3
