@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm1vw64whblha"]
+[gd_scene load_steps=5 format=3 uid="uid://bm1vw64whblha"]
 
-[ext_resource type="ArrayMesh" uid="uid://b0ilddtkvcj6v" path="res://assets/models/submarine/sliderbase.res" id="1_nacdn"]
-[ext_resource type="ArrayMesh" uid="uid://sdxi8jqov6wf" path="res://assets/models/submarine/phob2.res" id="2_xxt7b"]
-[ext_resource type="ArrayMesh" uid="uid://83xxurcxo8x5" path="res://assets/models/submarine/phob.res" id="3_mfxw3"]
+[ext_resource type="ArrayMesh" uid="uid://neb0lapouprs" path="res://assets/models/submarine/sliderbase.res" id="1_nacdn"]
+[ext_resource type="ArrayMesh" uid="uid://d2uayy0vpj3au" path="res://assets/models/submarine/phob2.res" id="2_xxt7b"]
+[ext_resource type="ArrayMesh" uid="uid://dxaqshynif26v" path="res://assets/models/submarine/phob.res" id="3_mfxw3"]
+[ext_resource type="Script" uid="uid://dxfhfenqw7da0" path="res://submarine/sliderbase/phob.gd" id="4_mfxw3"]
 
 [node name="Sliderbase" type="Node3D"]
 
@@ -13,4 +14,7 @@ mesh = ExtResource("1_nacdn")
 mesh = ExtResource("2_xxt7b")
 
 [node name="Phob" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19177, -0.351033)
 mesh = ExtResource("3_mfxw3")
+script = ExtResource("4_mfxw3")
+offset_max_abs = null
