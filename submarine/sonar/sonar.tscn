@@ -23,7 +23,7 @@ mesh = ExtResource("1_vc4sm")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73348, -3.24554)
 stream = ExtResource("4_iagkn")
-volume_db = -15.856
+volume_db = -21.622
 unit_size = 40.6
 pitch_scale = 0.24
 autoplay = true
