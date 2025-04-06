@@ -21,9 +21,16 @@ extends CharacterBody3D
 @export_subgroup("Movement")
 @export var movement_speed: float = 2.14
 
+var locked := false
+func _lock_camera() -> void:
+	locked = true
+
+func _unlock_camera() -> void:
+	locked = false
+
 var last_mouse_motion := Vector2.ZERO
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and not locked:
 		event = event as InputEventMouseMotion
 		var motion: Vector2 = event.screen_relative
 		var x: float = (last_mouse_motion.x + motion.x) / 2
@@ -42,6 +49,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Events.lock_camera.connect(_lock_camera)
+	Events.unlock_camera.connect(_unlock_camera)
 
 func handle_movement(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
