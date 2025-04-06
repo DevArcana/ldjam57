@@ -94,6 +94,16 @@ const MAX_OXYGEN: int = 36
 
 #endregion
 
+#region Score
+
+## Increased by picking up targets.
+var score: int = 0
+
+## The ship always knows the location of all targets and points at the nearest one.
+var targets: Array[Target]
+
+#endregion
+
 func _tick() -> void:
 	reactor.tick()
 	light.tick()

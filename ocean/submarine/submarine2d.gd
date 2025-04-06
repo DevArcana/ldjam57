@@ -23,8 +23,8 @@ var sonar_power: int:
 
 var sonar_speed: float = 0.0
 
-var vertical: int = 0
-var horizontal: int = 0
+var forward: int = 0
+var turn: int = 0
 
 func _ready() -> void:
 	sonar_power = 2
@@ -32,8 +32,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	scanner.rotate(delta * sonar_speed)
-	apply_force(Vector2(horizontal, vertical))
-	Events.depth_changed.emit()
+	apply_force(Vector2(0.0, -forward * 1000).rotated(rotation))
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

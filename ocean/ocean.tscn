@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bst4bo5wehts3"]
+[gd_scene load_steps=6 format=3 uid="uid://bst4bo5wehts3"]
 
 [ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="1_e15e0"]
 [ext_resource type="PackedScene" uid="uid://dpjovvdqybe5c" path="res://ocean/submarine/submarine.tscn" id="1_jlsjl"]
 [ext_resource type="PackedScene" uid="uid://5a8puc34brfr" path="res://ocean/rock.tscn" id="2_e15e0"]
+[ext_resource type="PackedScene" uid="uid://cpfs6sar7gnp" path="res://ocean/target.tscn" id="4_rusmu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rusmu"]
 shader = ExtResource("1_e15e0")
@@ -1881,3 +1882,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Target" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(-385, 1005)
+
+[node name="Target5" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(738, 1191)
+
+[node name="Target6" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(2052, 1488)
+
+[node name="Target7" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(-737, 8)
+
+[node name="Target8" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(115, -927)
+
+[node name="Target9" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(601, -527)
+
+[node name="Target2" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(-1034, -585)
+
+[node name="Target4" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(-1496, 810)
+
+[node name="Target3" parent="." instance=ExtResource("4_rusmu")]
+position = Vector2(131, 133)

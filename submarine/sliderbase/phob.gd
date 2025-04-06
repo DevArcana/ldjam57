@@ -16,6 +16,7 @@ var original_pos: Vector3
 var tween: Tween
 func _ready() -> void:
 	original_pos = transform.origin
+	_set_offset_to_nearest_level()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not interacting:
@@ -52,7 +53,8 @@ func _set_level() -> void:
 			i += 1
 		else:
 			break
-	level = i - 1
+	level = i - 2
+	Submarine.submarine2d.forward = level
 
 ## override this
 func interact_start() -> void:

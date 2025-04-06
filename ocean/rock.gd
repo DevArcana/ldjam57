@@ -4,6 +4,7 @@ extends Scannable
 @export var mesh: Polygon2D
 
 func _ready() -> void:
+	super._ready()
 	var x := 0.0
 	var y := 0.0
 	var p := randi_range(5, 9)
