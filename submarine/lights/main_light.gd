@@ -85,3 +85,9 @@ func tick() -> void:
 				alarm_oxygen.play()
 		else:
 			mode = Mode.POWERED
+	
+	if not is_reactor_overheating and alarm_reactor.playing:
+		alarm_reactor.stop()
+	
+	if not is_oxygen_low and alarm_oxygen.playing:
+		alarm_oxygen.stop()
