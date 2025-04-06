@@ -4,6 +4,7 @@ class_name SubmarineReactor
 @export var power_indicator: Indicator
 @export var heat_indicator: Indicator
 @export var particles: GPUParticles3D
+@export var explosion_sound: AudioStreamPlayer
 
 var heat: int = 0
 var max_heat: int = 0
@@ -36,6 +37,10 @@ func tick() -> void:
 		heat += 1
 	elif heat > max_heat:
 		heat -= 1
+	
+	if heat == MAX_TOTAL_HEAT:
+		explosion_sound.play()
+		Events.death_reactor_overheat.emit()
 	
 	refresh_visuals()
 

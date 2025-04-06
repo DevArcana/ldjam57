@@ -61,10 +61,10 @@ func disable() -> void:
 var timer := 0.0
 func _process(delta: float) -> void:
 	if mode == Mode.ALARM:
-		timer += delta
+		timer += delta * 2.5
 		if timer > 2 * PI:
 			timer -= 2* PI
-		light.light_energy = 0.5 + 0.5 * sin(timer)
+		light.light_energy = 0.5 + 0.5 * abs(sin(timer))
 	else:
 		timer = 0.0
 
