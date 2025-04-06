@@ -7,6 +7,7 @@ class_name SubmarineReactor
 
 var heat: int = 0
 var max_heat: int = 0
+const MAX_TOTAL_HEAT: int = 15
 
 func refresh_visuals() -> void:
 	for i in power_indicator.diode_count:

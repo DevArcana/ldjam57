@@ -1,5 +1,6 @@
 extends Interactable
 
+@export var start_on: bool = false
 @export var flick: Node3D
 @export var audio: AudioStreamPlayer3D
 
@@ -26,4 +27,8 @@ func interact_start() -> void:
 func interact_stop() -> void:
 	var dt := Time.get_ticks_msec() - elapsed
 	if dt > 250:
+		toggle()
+
+func _ready() -> void:
+	if start_on:
 		toggle()

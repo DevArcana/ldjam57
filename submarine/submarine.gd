@@ -16,12 +16,20 @@ signal power_unit_consumed
 ## Emitted whenever release_power_unit returns true.
 signal power_unit_released
 
+## Emitted when a new power unit is generated.
+signal power_unit_generated
+
 ## Number of power units currently produced by the reactor.
 var power_generated: int:
 	get:
 		return _power_generated
 	set(value):
+		var added := value > _power_generated
+		
 		_power_generated = value
+		
+		if added:
+			power_unit_generated.emit()
 		
 		while power_generated < power_consumed:
 			(_power_consumed_units.pop_front() as SubmarineSystem).power_unit_drained()
