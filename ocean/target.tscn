@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://5a8puc34brfr"]
+[gd_scene load_steps=2 format=3 uid="uid://cpfs6sar7gnp"]
 
-[ext_resource type="Script" uid="uid://d2176osj7en2m" path="res://ocean/rock.gd" id="1_sexql"]
+[ext_resource type="Script" uid="uid://d2176osj7en2m" path="res://ocean/rock.gd" id="1_j67bw"]
 
-[node name="Rock" type="RigidBody2D" node_paths=PackedStringArray("collider", "mesh")]
+[node name="Target" type="RigidBody2D" node_paths=PackedStringArray("collider", "mesh")]
 gravity_scale = 0.0
-script = ExtResource("1_sexql")
+script = ExtResource("1_j67bw")
 collider = NodePath("CollisionShape2D")
 mesh = NodePath("CollisionShape2D/Polygon2D")
 
