@@ -14,6 +14,9 @@ extends CharacterBody3D
 ## Used for interaction in mouse mode
 @export var camera: Camera3D
 
+## Used for footsteps.
+@export var footsteps: AudioStreamPlayer3D
+
 @export_category("Settings")
 @export_subgroup("View")
 @export var mouse_sensitivity: float = 3.68
@@ -52,6 +55,9 @@ func _ready() -> void:
 	Events.lock_camera.connect(_lock_camera)
 	Events.unlock_camera.connect(_unlock_camera)
 
+
+var timer: float = 0.0
+var moved: bool = false
 func handle_movement(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
 	var wish_dir := body.global_basis * Vector3(input_dir.x, 0, input_dir.y)
@@ -60,6 +66,24 @@ func handle_movement(delta: float) -> void:
 	velocity = velocity.lerp(wish_dir * movement_speed, 20 * delta)
 	
 	move_and_slide()
+	
+	var vel := velocity.length()
+	if vel < 0.01:
+		timer = 0.0
+		moved = false
+		return
+	elif not moved:
+		moved = true
+		footsteps.stop()
+		footsteps.play()
+		
+	timer += vel * delta
+	
+	var step := 0.8
+	if timer > step:
+		timer -= step
+		footsteps.stop()
+		footsteps.play()
 
 var focused: Interactable
 var interacting := false

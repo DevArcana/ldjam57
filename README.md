@@ -14,3 +14,4 @@ Ludum Dare 57 Game Jam
 - https://godotshaders.com/shader/perfect-retro-pixel-shader-godot-4/
 - https://godotshaders.com/shader/best-outline-shader-for-3d-object-2/
 - https://voicegenerator.io/
+- https://freesound.org/people/LittleRobotSoundFactory/packs/16687/

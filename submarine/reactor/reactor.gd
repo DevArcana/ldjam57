@@ -5,6 +5,7 @@ class_name SubmarineReactor
 @export var heat_indicator: Indicator
 @export var particles: GPUParticles3D
 @export var explosion_sound: AudioStreamPlayer
+@export var shutting_down_sound: AudioStreamPlayer
 
 var heat: int = 0
 var max_heat: int = 0
@@ -46,10 +47,15 @@ func tick() -> void:
 	
 	refresh_visuals()
 
+func _power_generated_changed() -> void:
+	if Submarine.power_generated == 0:
+		shutting_down_sound.play()
+
 func _ready() -> void:
 	refresh_visuals()
 	Submarine.power_unit_consumed.connect(refresh_visuals)
 	Submarine.power_unit_released.connect(refresh_visuals)
+	Submarine.power_generated_changed.connect(_power_generated_changed)
 
 func inc_value() -> void:
 	if Submarine.power_generated < power_indicator.diode_count:

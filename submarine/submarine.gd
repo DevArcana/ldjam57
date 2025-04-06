@@ -20,6 +20,9 @@ signal power_unit_released
 ## Emitted when a new power unit is generated.
 signal power_unit_generated
 
+## Emitted whenever the value of power_generated_changes.
+signal power_generated_changed
+
 ## Number of power units currently produced by the reactor.
 var power_generated: int:
 	get:
@@ -27,13 +30,20 @@ var power_generated: int:
 	set(value):
 		var added := value > _power_generated
 		
+		if _power_generated == value:
+			return
+		
 		_power_generated = value
 		
 		if added:
 			power_unit_generated.emit()
+		elif _power_generated < len(_power_consumed_units):
+			_power_generated = 0
 		
 		while power_generated < power_consumed:
 			(_power_consumed_units.pop_front() as SubmarineSystem).power_unit_drained()
+		
+		power_generated_changed.emit()
 
 ## Number of power units currently consumed by all systems.
 var power_consumed: int:
@@ -48,6 +58,8 @@ var power_available: int:
 ## Try to consume a unit of power.
 func consume_power_unit(system: SubmarineSystem) -> bool:
 	if power_available == 0:
+		# exceeded power draw
+		power_generated = 0
 		return false
 	
 	_power_consumed_units.push_front(system)

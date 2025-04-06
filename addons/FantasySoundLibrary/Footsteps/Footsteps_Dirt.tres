@@ -1,0 +1,25 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=11 format=3 uid="uid://qlbnc5egosux"]
+
+[ext_resource type="AudioStream" uid="uid://cf3fd1mvah00e" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_00.wav" id="1_imcbh"]
+[ext_resource type="AudioStream" uid="uid://cund0ces7o7y2" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_01.wav" id="2_uiubv"]
+[ext_resource type="AudioStream" uid="uid://cceshv48gbj48" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_02.wav" id="3_q68mn"]
+[ext_resource type="AudioStream" uid="uid://coeoat6va36yr" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_03.wav" id="4_7viw0"]
+[ext_resource type="AudioStream" uid="uid://vx5guahcvqji" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_04.wav" id="5_7w5ki"]
+[ext_resource type="AudioStream" uid="uid://ccly43p2g7vcn" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_05.wav" id="6_004b5"]
+[ext_resource type="AudioStream" uid="uid://dt4tfjo7ft5bk" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_06.wav" id="7_0xlbg"]
+[ext_resource type="AudioStream" uid="uid://f11qnvbli4v" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_07.wav" id="8_4fa81"]
+[ext_resource type="AudioStream" uid="uid://b5p8e3lekk4bf" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_08.wav" id="9_be6i0"]
+[ext_resource type="AudioStream" uid="uid://fwletvypjvxh" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Dirt_09.wav" id="10_byjl3"]
+
+[resource]
+streams_count = 10
+stream_0/stream = ExtResource("1_imcbh")
+stream_1/stream = ExtResource("2_uiubv")
+stream_2/stream = ExtResource("3_q68mn")
+stream_3/stream = ExtResource("4_7viw0")
+stream_4/stream = ExtResource("5_7w5ki")
+stream_5/stream = ExtResource("6_004b5")
+stream_6/stream = ExtResource("7_0xlbg")
+stream_7/stream = ExtResource("8_4fa81")
+stream_8/stream = ExtResource("9_be6i0")
+stream_9/stream = ExtResource("10_byjl3")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://uxp5tpmomrff"]
+[gd_scene load_steps=15 format=3 uid="uid://uxp5tpmomrff"]
 
 [ext_resource type="Script" uid="uid://bm308egkfr4vm" path="res://submarine/reactor/reactor.gd" id="1_ricsu"]
 [ext_resource type="ArrayMesh" uid="uid://c05xo4oaiwl6q" path="res://assets/models/submarine/reactor.res" id="2_05wb6"]
 [ext_resource type="PackedScene" uid="uid://ctdwnh8tu38wm" path="res://switches/button.tscn" id="4_05wb6"]
 [ext_resource type="PackedScene" uid="uid://bh20ok1tkb0kb" path="res://submarine/reactor/indicator.tscn" id="4_ilotv"]
 [ext_resource type="AudioStream" uid="uid://ruderbap0kwk" path="res://assets/sounds/explosion.mp3" id="5_ilotv"]
+[ext_resource type="AudioStream" uid="uid://dgyjokw24ipiw" path="res://assets/sounds/generator_shutting_down.mp3" id="6_ctsjy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v43w7"]
 size = Vector3(1.39172, 2.49222, 2.25858)
@@ -53,12 +54,13 @@ height = 0.02
 radial_segments = 8
 rings = 2
 
-[node name="Reactor" type="StaticBody3D" node_paths=PackedStringArray("power_indicator", "heat_indicator", "particles", "explosion_sound")]
+[node name="Reactor" type="StaticBody3D" node_paths=PackedStringArray("power_indicator", "heat_indicator", "particles", "explosion_sound", "shutting_down_sound")]
 script = ExtResource("1_ricsu")
 power_indicator = NodePath("PowerIndicator")
 heat_indicator = NodePath("HeatIndicator")
 particles = NodePath("GPUParticles3D")
-explosion_sound = NodePath("AudioStreamPlayer")
+explosion_sound = NodePath("Explosion")
+shutting_down_sound = NodePath("ShuttingDown")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.212911, 1.2783, 2.15897)
@@ -100,8 +102,11 @@ transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.371
 [node name="Dec" parent="." instance=ExtResource("4_05wb6")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.71396, 1.27404, 1.52098)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ilotv")
+
+[node name="ShuttingDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ctsjy")
 
 [connection signal="pressed" from="Inc" to="." method="inc_value"]
 [connection signal="pressed" from="Dec" to="." method="dec_value"]

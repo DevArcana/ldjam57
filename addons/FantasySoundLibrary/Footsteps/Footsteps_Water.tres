@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=9 format=3 uid="uid://l05sm0857u5k"]
+
+[ext_resource type="AudioStream" uid="uid://1amexlgmlsrt" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_00.wav" id="1_ntlds"]
+[ext_resource type="AudioStream" uid="uid://ca2o77842evgw" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_01.wav" id="2_1j1d1"]
+[ext_resource type="AudioStream" uid="uid://bwwqbusplkcgv" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_02.wav" id="3_tq7lj"]
+[ext_resource type="AudioStream" uid="uid://b7027k0sthuof" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_03.wav" id="4_86bff"]
+[ext_resource type="AudioStream" uid="uid://cqirpvpby60ci" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_04.wav" id="5_n7s1v"]
+[ext_resource type="AudioStream" uid="uid://b27o3jxfbs1gk" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_05.wav" id="6_u2n2c"]
+[ext_resource type="AudioStream" uid="uid://dh8w88ldl5x8t" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_06.wav" id="7_x4fwd"]
+[ext_resource type="AudioStream" uid="uid://11jxga281myu" path="res://addons/FantasySoundLibrary/Footsteps/Footstep_Water_07.wav" id="8_813y4"]
+
+[resource]
+streams_count = 8
+stream_0/stream = ExtResource("1_ntlds")
+stream_1/stream = ExtResource("2_1j1d1")
+stream_2/stream = ExtResource("3_tq7lj")
+stream_3/stream = ExtResource("4_86bff")
+stream_4/stream = ExtResource("5_n7s1v")
+stream_5/stream = ExtResource("6_u2n2c")
+stream_6/stream = ExtResource("7_x4fwd")
+stream_7/stream = ExtResource("8_813y4")
