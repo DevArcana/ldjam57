@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bst4bo5wehts3"]
 
-[ext_resource type="PackedScene" uid="uid://dpjovvdqybe5c" path="res://ocean/submarine.tscn" id="1_jlsjl"]
+[ext_resource type="PackedScene" uid="uid://dpjovvdqybe5c" path="res://ocean/submarine/submarine.tscn" id="1_jlsjl"]
 [ext_resource type="PackedScene" uid="uid://5a8puc34brfr" path="res://ocean/rock.tscn" id="2_e15e0"]
 
 [node name="Display" type="Node2D"]
