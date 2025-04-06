@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c0qbjern60f03" path="res://submarine/lights/main_light.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://hktbh6i7wskp" path="res://submarine/sonar/sonar.tscn" id="5_272bh"]
 [ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="6_7mycd"]
-[ext_resource type="Script" path="res://submarine/submarine_postinit.gd" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://chrhy7caxi145" path="res://submarine/submarine_postinit.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://uxp5tpmomrff" path="res://submarine/reactor/reactor.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://cawbhxbnwiqe4" path="res://assets/models/coolingandlifesupport.glb" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://3msohm62bwjs" path="res://submarine/life_support/life_support.tscn" id="9_kek77"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
 shader = ExtResource("6_7mycd")
@@ -50,10 +50,11 @@ environment = SubResource("Environment_ig7tw")
 
 [node name="Submarine" type="Node3D" parent="."]
 
-[node name="Init" type="Node" parent="Submarine" node_paths=PackedStringArray("reactor", "light")]
+[node name="Init" type="Node" parent="Submarine" node_paths=PackedStringArray("reactor", "light", "life_support")]
 script = ExtResource("3_5vw27")
 reactor = NodePath("../Reactor")
 light = NodePath("../MainLight")
+life_support = NodePath("../../LifeSupport")
 
 [node name="Hull" type="MeshInstance3D" parent="Submarine"]
 mesh = ExtResource("3_kek77")
@@ -75,5 +76,4 @@ script = ExtResource("7_5vw27")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 
-[node name="coolingandlifesupport" parent="." instance=ExtResource("9_kek77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46559, 0.972944, 0.731122)
+[node name="LifeSupport" parent="." instance=ExtResource("9_kek77")]

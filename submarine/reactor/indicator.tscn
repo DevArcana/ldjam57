@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bh20ok1tkb0kb"]
 
-[ext_resource type="Script" uid="uid://beqpe5gcfdepn" path="res://submarine/reactor/indicator.gd" id="1_hxdso"]
+[ext_resource type="Script" uid="uid://beqpe5gcfdepn" path="res://submarine/indicator.gd" id="1_hxdso"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_05wb6"]
 radius = 0.01

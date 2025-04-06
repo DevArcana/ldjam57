@@ -3,6 +3,7 @@ extends Node
 #region Systems
 var reactor: SubmarineReactor
 var light: SubmarineLight
+var life_support: SubmarineLifeSupport
 #endregion
 
 #region Power
@@ -64,9 +65,18 @@ var external_heat_mod: int = -20
 
 #endregion
 
+#region Oxygen
+
+## Number of oxygen units. At zero the player dies. Max is 36.
+var oxygen: int = 32
+const MAX_OXYGEN: int = 36
+
+#endregion
+
 func _tick() -> void:
 	reactor.tick()
 	light.tick()
+	life_support.tick()
 
 var timer := 0.0
 const TIME_PER_TICK := 1.0

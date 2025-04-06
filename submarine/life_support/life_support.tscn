@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=3 uid="uid://3msohm62bwjs"]
+
+[ext_resource type="Script" uid="uid://bay25bv7im0a2" path="res://submarine/life_support/life_support.gd" id="1_lb8wu"]
+[ext_resource type="ArrayMesh" uid="uid://bodthjr3h7310" path="res://assets/models/submarine/life_support.res" id="1_n8jid"]
+[ext_resource type="PackedScene" uid="uid://ctdwnh8tu38wm" path="res://switches/button.tscn" id="3_e3r11"]
+[ext_resource type="PackedScene" uid="uid://deoehnxy0vpg6" path="res://submarine/life_support/indicator.tscn" id="4_2fsqp"]
+[ext_resource type="Script" uid="uid://beqpe5gcfdepn" path="res://submarine/indicator.gd" id="5_e7bkf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n8jid"]
+size = Vector3(1.081, 2.097, 2.13)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lb8wu"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3(1, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3r11"]
+emission_enabled = true
+emission = Color(0, 0.337255, 1, 1)
+emission_energy_multiplier = 3.0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_2fsqp"]
+material = SubResource("StandardMaterial3D_e3r11")
+size = Vector2(0.01, 0.01)
+
+[sub_resource type="SphereMesh" id="SphereMesh_05wb6"]
+radius = 0.01
+height = 0.02
+radial_segments = 8
+rings = 2
+
+[node name="LifeSupport" type="StaticBody3D" node_paths=PackedStringArray("particles", "indicator", "oxygen")]
+script = ExtResource("1_lb8wu")
+particles = NodePath("GPUParticles3D")
+indicator = NodePath("Indicator")
+oxygen = NodePath("Oxygen")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.877, 1.042, 0)
+visible = false
+shape = SubResource("BoxShape3D_n8jid")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_n8jid")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74751, 0.884901, 0.64228)
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_lb8wu")
+draw_pass_1 = SubResource("QuadMesh_2fsqp")
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.33958, 1.47172, 0.647753)
+pixel_size = 0.0005
+text = "Life Support"
+font_size = 50
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.33958, 1.99201, 0.647753)
+pixel_size = 0.0005
+text = "Oxygen"
+font_size = 50
+
+[node name="Increment" parent="." instance=ExtResource("3_e3r11")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.33364, 1.42431, 0.781309)
+
+[node name="Label3D" type="Label3D" parent="Increment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0362827, 0)
+pixel_size = 0.0005
+text = "+"
+font_size = 100
+
+[node name="Increment2" parent="." instance=ExtResource("3_e3r11")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.33364, 1.42431, 0.507206)
+
+[node name="Label3D" type="Label3D" parent="Increment2"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.00582778, 0.0362827, 0)
+pixel_size = 0.0005
+text = "-"
+font_size = 100
+
+[node name="Indicator" parent="." instance=ExtResource("4_2fsqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34442, 1.425, 0.673773)
+
+[node name="Oxygen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34442, 1.95342, 0.676446)
+script = ExtResource("5_e7bkf")
+
+[node name="1" type="MeshInstance3D" parent="Oxygen"]
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="2" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="3" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="4" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="5" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="6" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="7" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 0)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="8" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="9" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="10" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="11" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="12" type="MeshInstance3D" parent="Oxygen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[connection signal="pressed" from="Increment" to="." method="increment"]
+[connection signal="pressed" from="Increment2" to="." method="decrement"]
