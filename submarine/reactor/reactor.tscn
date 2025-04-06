@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://uxp5tpmomrff"]
+[gd_scene load_steps=16 format=3 uid="uid://uxp5tpmomrff"]
 
 [ext_resource type="Script" uid="uid://bm308egkfr4vm" path="res://submarine/reactor/reactor.gd" id="1_ricsu"]
 [ext_resource type="ArrayMesh" uid="uid://c05xo4oaiwl6q" path="res://assets/models/submarine/reactor.res" id="2_05wb6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bh20ok1tkb0kb" path="res://submarine/reactor/indicator.tscn" id="4_ilotv"]
 [ext_resource type="AudioStream" uid="uid://ruderbap0kwk" path="res://assets/sounds/explosion.mp3" id="5_ilotv"]
 [ext_resource type="AudioStream" uid="uid://dgyjokw24ipiw" path="res://assets/sounds/generator_shutting_down.mp3" id="6_ctsjy"]
+[ext_resource type="AudioStream" uid="uid://bn1y8mvn0h6y1" path="res://assets/sounds/reactor_running.mp3" id="7_hg3te"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v43w7"]
 size = Vector3(1.39172, 2.49222, 2.25858)
@@ -107,6 +108,14 @@ stream = ExtResource("5_ilotv")
 
 [node name="ShuttingDown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ctsjy")
+
+[node name="Running" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265813, 1.10394, 2.28482)
+stream = ExtResource("7_hg3te")
+volume_db = -23.063
+unit_size = 16.3
+pitch_scale = 0.03
+autoplay = true
 
 [connection signal="pressed" from="Inc" to="." method="inc_value"]
 [connection signal="pressed" from="Dec" to="." method="dec_value"]
