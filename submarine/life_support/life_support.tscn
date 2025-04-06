@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://3msohm62bwjs"]
+[gd_scene load_steps=12 format=3 uid="uid://3msohm62bwjs"]
 
 [ext_resource type="Script" uid="uid://bay25bv7im0a2" path="res://submarine/life_support/life_support.gd" id="1_lb8wu"]
 [ext_resource type="ArrayMesh" uid="uid://bodthjr3h7310" path="res://assets/models/submarine/life_support.res" id="1_n8jid"]
 [ext_resource type="PackedScene" uid="uid://ctdwnh8tu38wm" path="res://switches/button.tscn" id="3_e3r11"]
 [ext_resource type="PackedScene" uid="uid://deoehnxy0vpg6" path="res://submarine/life_support/indicator.tscn" id="4_2fsqp"]
 [ext_resource type="Script" uid="uid://beqpe5gcfdepn" path="res://submarine/indicator.gd" id="5_e7bkf"]
+[ext_resource type="AudioStream" uid="uid://du1etrnflr2xv" path="res://assets/sounds/oxygen_depleted.mp3" id="6_oh74f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8jid"]
 size = Vector3(1.081, 2.097, 2.13)
@@ -30,11 +31,12 @@ height = 0.02
 radial_segments = 8
 rings = 2
 
-[node name="LifeSupport" type="StaticBody3D" node_paths=PackedStringArray("particles", "indicator", "oxygen")]
+[node name="LifeSupport" type="StaticBody3D" node_paths=PackedStringArray("particles", "indicator", "oxygen", "oxygen_depleted_sound")]
 script = ExtResource("1_lb8wu")
 particles = NodePath("GPUParticles3D")
 indicator = NodePath("Indicator")
 oxygen = NodePath("Oxygen")
+oxygen_depleted_sound = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.877, 1.042, 0)
@@ -133,6 +135,9 @@ mesh = SubResource("SphereMesh_05wb6")
 [node name="12" type="MeshInstance3D" parent="Oxygen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, -0.06)
 mesh = SubResource("SphereMesh_05wb6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_oh74f")
 
 [connection signal="pressed" from="Increment" to="." method="increment"]
 [connection signal="pressed" from="Increment2" to="." method="decrement"]

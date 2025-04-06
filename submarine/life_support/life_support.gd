@@ -4,6 +4,7 @@ class_name SubmarineLifeSupport
 @export var particles: GPUParticles3D
 @export var indicator: Indicator
 @export var oxygen: Indicator
+@export var oxygen_depleted_sound: AudioStreamPlayer
 
 const MAX_POWER: int = 3
 
@@ -44,9 +45,15 @@ func power_unit_drained() -> void:
 func power_unit_provided() -> void:
 	power += 1
 
+var dead := false
 func tick() -> void:
 	# oxygen drain each tick is 2 points
 	Submarine.oxygen = clamp(Submarine.oxygen - 2 + power, 0, Submarine.MAX_OXYGEN)
+	if Submarine.oxygen == 0 and not dead:
+		dead = true
+		oxygen_depleted_sound.play()
+		Events.death_oxygen_depleted.emit()
+		
 	_refresh_visuals()
 
 func increment() -> void:

@@ -32,13 +32,15 @@ func refresh_visuals() -> void:
 	var amt := Submarine.power_generated / float(power_indicator.diode_count)
 	particles.amount_ratio = amt
 
+var dead := false
 func tick() -> void:
 	if heat < max_heat:
 		heat += 1
 	elif heat > max_heat:
 		heat -= 1
 	
-	if heat == MAX_TOTAL_HEAT:
+	if heat == MAX_TOTAL_HEAT and not dead:
+		dead = true
 		explosion_sound.play()
 		Events.death_reactor_overheat.emit()
 	
