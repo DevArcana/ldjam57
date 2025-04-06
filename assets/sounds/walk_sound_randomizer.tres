@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://nxn0ejelkkfy"]
+
+[ext_resource type="AudioStream" uid="uid://cgsmkam6wiiss" path="res://assets/sounds/walk1.mp3" id="1_jjom3"]
+[ext_resource type="AudioStream" uid="uid://cidl63q1pg3jc" path="res://assets/sounds/walk2.mp3" id="2_6b1yi"]
+[ext_resource type="AudioStream" uid="uid://dpctopwk202rw" path="res://assets/sounds/walk3.mp3" id="3_j3yie"]
+[ext_resource type="AudioStream" uid="uid://c4b8vl8tnvb70" path="res://assets/sounds/walk4.mp3" id="4_c2ic8"]
+[ext_resource type="AudioStream" uid="uid://2pk4qdwoptri" path="res://assets/sounds/walk5.mp3" id="5_pknul"]
+[ext_resource type="AudioStream" uid="uid://dhiy6sgixr44l" path="res://assets/sounds/walk6.mp3" id="6_2gov5"]
+[ext_resource type="AudioStream" uid="uid://sqy8mqpfkno8" path="res://assets/sounds/walk7.mp3" id="7_4vvot"]
+
+[resource]
+streams_count = 7
+stream_0/stream = ExtResource("1_jjom3")
+stream_1/stream = ExtResource("2_6b1yi")
+stream_2/stream = ExtResource("3_j3yie")
+stream_3/stream = ExtResource("4_c2ic8")
+stream_4/stream = ExtResource("5_pknul")
+stream_5/stream = ExtResource("6_2gov5")
+stream_6/stream = ExtResource("7_4vvot")

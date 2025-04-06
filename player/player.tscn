@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jf6vv85osh8b" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://pkob8h6kgfuh" path="res://player/overlay.gd" id="2_rkbax"]
-[ext_resource type="AudioStream" uid="uid://qlbnc5egosux" path="res://addons/FantasySoundLibrary/Footsteps/Footsteps_Dirt.tres" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://nxn0ejelkkfy" path="res://assets/sounds/walk_sound_randomizer.tres" id="3_g1dw6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kqu6x"]
 height = 1.8
