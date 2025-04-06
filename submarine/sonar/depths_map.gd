@@ -24,5 +24,5 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("submarine_forward"):
 		submarine_position += Vector2(0.0, submarine_speed * _delta)
-	elif Input.is_action_just_pressed("submarine_backward"):
+	elif Input.is_action_pressed("submarine_backward"):
 		submarine_position -= Vector2(0.0, submarine_speed * _delta * 0.5)
