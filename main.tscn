@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=13 format=3 uid="uid://cr2crs5tmcekg"]
 
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bf27vwrjjc8bq" path="res://submarine/submarine_init.gd" id="3_5vw27"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="6_7mycd"]
 [ext_resource type="Script" path="res://submarine/submarine_postinit.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://uxp5tpmomrff" path="res://submarine/reactor/reactor.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://cawbhxbnwiqe4" path="res://assets/models/coolingandlifesupport.glb" id="9_kek77"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
 shader = ExtResource("6_7mycd")
@@ -73,3 +74,6 @@ shape = SubResource("ConcavePolygonShape3D_5vw27")
 script = ExtResource("7_5vw27")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="coolingandlifesupport" parent="." instance=ExtResource("9_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46559, 0.972944, 0.731122)
