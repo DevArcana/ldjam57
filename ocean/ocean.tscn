@@ -1,23 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bst4bo5wehts3"]
+[gd_scene load_steps=4 format=3 uid="uid://bst4bo5wehts3"]
 
-[ext_resource type="Shader" uid="uid://bmlusc4ctaigv" path="res://assets/shaders/retro_canvas.gdshader" id="1_e15e0"]
 [ext_resource type="PackedScene" uid="uid://dpjovvdqybe5c" path="res://ocean/submarine/submarine.tscn" id="1_jlsjl"]
 [ext_resource type="PackedScene" uid="uid://5a8puc34brfr" path="res://ocean/rock.tscn" id="2_e15e0"]
 [ext_resource type="PackedScene" uid="uid://cpfs6sar7gnp" path="res://ocean/target.tscn" id="4_rusmu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rusmu"]
-shader = ExtResource("1_e15e0")
-shader_parameter/shake = 0.015
-shader_parameter/noiseQuality = 250.0
-shader_parameter/noiseIntensity = 0.001
-shader_parameter/offsetIntensity = 0.0045
-shader_parameter/colorOffsetIntensity = 0.2
-shader_parameter/pixelSize = 200.0
-shader_parameter/grainIntensity = 0.04
-shader_parameter/use_overlay = false
-shader_parameter/use_lens_distortion = true
-shader_parameter/overlay_color = Color(1, 1, 1, 10)
-shader_parameter/lens_distortion_strength = 0.05
 
 [node name="Display" type="Node2D"]
 
@@ -1872,16 +1857,6 @@ position = Vector2(344, 1306)
 
 [node name="Rock575" parent="Rocks" instance=ExtResource("2_e15e0")]
 position = Vector2(569, 1302)
-
-[node name="RetroPostProcessing" type="ColorRect" parent="."]
-process_mode = 4
-material = SubResource("ShaderMaterial_rusmu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Target" parent="." instance=ExtResource("4_rusmu")]
 position = Vector2(-385, 1005)

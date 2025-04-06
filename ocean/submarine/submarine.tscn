@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpjovvdqybe5c"]
+[gd_scene load_steps=5 format=3 uid="uid://dpjovvdqybe5c"]
 
 [ext_resource type="Script" uid="uid://d3yy5mk10xsl8" path="res://ocean/submarine/submarine2d.gd" id="1_x6yfb"]
+[ext_resource type="Script" uid="uid://wrtmox1q6sfd" path="res://ocean/submarine/target_seeker.gd" id="2_yeho4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4jr7g"]
 size = Vector3(2, 128, 1)
@@ -30,6 +31,13 @@ polygon = PackedVector2Array(-8, 22, 8, 22, 0, -4)
 
 [node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
 polygon = PackedVector2Array(-8, 22, 8, 22, 0, -4)
+
+[node name="TargetPointer" type="Polygon2D" parent="."]
+z_index = 1
+scale = Vector2(1, 2.75)
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(0, -30, 13, -25, 0, -35, -13, -25)
+script = ExtResource("2_yeho4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1, 2.75)
