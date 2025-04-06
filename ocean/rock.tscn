@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://5a8puc34brfr"]
+[gd_scene load_steps=2 format=3 uid="uid://5a8puc34brfr"]
+
+[ext_resource type="Script" uid="uid://dclioa2paigg1" path="res://ocean/scannable.gd" id="1_sexql"]
 
 [node name="Rock" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_sexql")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, 22, 8, 22, 14, -6, 0, -22, -20, -3)
