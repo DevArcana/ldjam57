@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm1vw64whblha"]
 
 [ext_resource type="ArrayMesh" uid="uid://neb0lapouprs" path="res://assets/models/submarine/sliderbase.res" id="1_nacdn"]
-[ext_resource type="ArrayMesh" uid="uid://d2uayy0vpj3au" path="res://assets/models/submarine/phob2.res" id="2_xxt7b"]
 [ext_resource type="ArrayMesh" uid="uid://dxaqshynif26v" path="res://assets/models/submarine/phob.res" id="3_mfxw3"]
 [ext_resource type="Script" uid="uid://dxfhfenqw7da0" path="res://submarine/sliderbase/phob.gd" id="4_mfxw3"]
+[ext_resource type="ArrayMesh" uid="uid://cy1v5mniviv8l" path="res://assets/models/submarine/torus.res" id="4_uamcf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s05kf"]
 size = Vector3(0.188965, 0.101318, 0.0820313)
@@ -29,5 +29,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.439955, -0.921789, 2.46201)
 mesh = ExtResource("3_mfxw3")
 skeleton = NodePath("../..")
 
-[node name="Phob2" type="MeshInstance3D" parent="."]
-mesh = ExtResource("2_xxt7b")
+[node name="Torus" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_uamcf")
