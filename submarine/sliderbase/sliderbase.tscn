@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm1vw64whblha"]
+[gd_scene load_steps=10 format=3 uid="uid://bm1vw64whblha"]
 
 [ext_resource type="ArrayMesh" uid="uid://neb0lapouprs" path="res://assets/models/submarine/sliderbase.res" id="1_nacdn"]
+[ext_resource type="Script" uid="uid://cqnaay1rin1t7" path="res://submarine/sliderbase/engines.gd" id="1_ui1xu"]
 [ext_resource type="ArrayMesh" uid="uid://dxaqshynif26v" path="res://assets/models/submarine/phob.res" id="3_mfxw3"]
 [ext_resource type="Script" uid="uid://dxfhfenqw7da0" path="res://submarine/sliderbase/phob.gd" id="4_mfxw3"]
 [ext_resource type="Script" uid="uid://cym8w32vpdaui" path="res://submarine/sliderbase/torus.gd" id="4_s05kf"]
 [ext_resource type="ArrayMesh" uid="uid://dsvhgm275w2ml" path="res://assets/models/submarine/torus.res" id="4_uamcf"]
+[ext_resource type="PackedScene" uid="uid://b0w30mxg0gdh7" path="res://submarine/sliderbase/indicator.tscn" id="6_s05kf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s05kf"]
 size = Vector3(0.188965, 0.101318, 0.0820313)
@@ -12,16 +14,19 @@ size = Vector3(0.188965, 0.101318, 0.0820313)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ui1xu"]
 size = Vector3(0.199707, 0.0339508, 0.196167)
 
-[node name="Sliderbase" type="Node3D"]
+[node name="Sliderbase" type="Node3D" node_paths=PackedStringArray("indicator")]
+script = ExtResource("1_ui1xu")
+indicator = NodePath("Indicator")
 
 [node name="Sliderbase" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_nacdn")
 
-[node name="PhobLeft" type="StaticBody3D" parent="." node_paths=PackedStringArray("meshes")]
+[node name="PhobLeft" type="StaticBody3D" parent="." node_paths=PackedStringArray("engines", "meshes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439955, 0.921789, -2.46201)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_mfxw3")
+engines = NodePath("..")
 meshes = [NodePath("Phob")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhobLeft"]
@@ -47,3 +52,24 @@ shape = SubResource("BoxShape3D_ui1xu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.77099, 2.16194)
 mesh = ExtResource("4_uamcf")
 skeleton = NodePath("../..")
+
+[node name="Indicator" parent="." instance=ExtResource("6_s05kf")]
+transform = Transform3D(1, 0, 0, 0, 0.890046, -0.455871, 0, 0.455871, 0.890046, -0.290029, 0.807024, -2.41547)
+
+[node name="1" parent="Indicator" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.45058e-09, 0.313956)
+
+[node name="2" parent="Indicator" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72529e-09, 0.11317)
+visible = false
+
+[node name="3" parent="Indicator" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.31323e-10, -0.0884458)
+
+[node name="4" parent="Indicator" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.293382)
+
+[node name="5" parent="Indicator" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.474078)
+
+[editable path="Indicator"]

@@ -4,7 +4,9 @@ extends Node
 var reactor: SubmarineReactor
 var light: SubmarineLight
 var life_support: SubmarineLifeSupport
+var engines: SubmarineEngines
 var submarine2d: Submarine2D
+var sonar: SubmarineSonar
 #endregion
 
 #region Power
@@ -108,6 +110,8 @@ func _tick() -> void:
 	reactor.tick()
 	light.tick()
 	life_support.tick()
+	engines.tick()
+	sonar.tick()
 
 var timer := 0.0
 const TIME_PER_TICK := 1.0

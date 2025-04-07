@@ -1,5 +1,7 @@
 extends Interactable
 
+@export var engines: SubmarineEngines
+
 # DO NOT MODIFY!
 @export var offset_max_abs: float = 0.4
 @export var angle: float = 0.5
@@ -54,7 +56,7 @@ func _set_level() -> void:
 		else:
 			break
 	level = i - 2
-	Submarine.submarine2d.forward = level
+	engines.slider_value = level
 
 ## override this
 func interact_start() -> void:

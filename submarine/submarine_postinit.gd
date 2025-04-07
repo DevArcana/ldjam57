@@ -5,5 +5,8 @@ func _ready() -> void:
 	for i in 10:
 		Submarine.reactor.inc_value()
 	
-	for i in 2:
+	for i in 3:
 		Submarine.consume_power_unit(Submarine.life_support)
+	
+	for i in 2:
+		Submarine.consume_power_unit(Submarine.sonar)

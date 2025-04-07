@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0w30mxg0gdh7"]
+
+[ext_resource type="Script" uid="uid://beqpe5gcfdepn" path="res://submarine/indicator.gd" id="1_qvw2s"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_05wb6"]
+radius = 0.01
+height = 0.02
+radial_segments = 8
+rings = 2
+
+[node name="Indicator" type="Node3D"]
+script = ExtResource("1_qvw2s")
+
+[node name="1" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
+mesh = SubResource("SphereMesh_05wb6")
+
+[node name="5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12)
+mesh = SubResource("SphereMesh_05wb6")

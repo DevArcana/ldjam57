@@ -52,11 +52,13 @@ environment = SubResource("Environment_ig7tw")
 
 [node name="Submarine" type="Node3D" parent="."]
 
-[node name="Init" type="Node" parent="Submarine" node_paths=PackedStringArray("reactor", "light", "life_support")]
+[node name="Init" type="Node" parent="Submarine" node_paths=PackedStringArray("reactor", "light", "life_support", "engines", "sonar")]
 script = ExtResource("3_5vw27")
 reactor = NodePath("../Reactor")
 light = NodePath("../MainLight")
 life_support = NodePath("../../LifeSupport")
+engines = NodePath("../../Sliderbase")
+sonar = NodePath("../Sonar")
 
 [node name="Hull" type="MeshInstance3D" parent="Submarine"]
 mesh = ExtResource("3_kek77")

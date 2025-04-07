@@ -27,7 +27,6 @@ var forward: int = 0
 var turn: float = 0
 
 func _ready() -> void:
-	sonar_power = 2
 	Submarine.submarine2d = self
 
 func _physics_process(delta: float) -> void:
