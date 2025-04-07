@@ -107,11 +107,17 @@ var targets: Array[Target]
 #endregion
 
 func _tick() -> void:
-	reactor.tick()
-	light.tick()
-	life_support.tick()
-	engines.tick()
-	sonar.tick()
+	if reactor:
+		reactor.tick()
+	if light:
+		light.tick()
+	if life_support:
+		life_support.tick()
+	if engines:
+		engines.tick()
+	if sonar:
+		sonar.tick()
+
 
 var timer := 0.0
 const TIME_PER_TICK := 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr2crs5tmcekg"]
+[gd_scene load_steps=16 format=3 uid="uid://cr2crs5tmcekg"]
 
 [ext_resource type="PackedScene" uid="uid://nfnnlxxwwg4i" path="res://player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bf27vwrjjc8bq" path="res://submarine/submarine_init.gd" id="3_5vw27"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://3msohm62bwjs" path="res://submarine/life_support/life_support.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://cs4r1q5yx6x03" path="res://submarine/pcunit/pcunit.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://bm1vw64whblha" path="res://submarine/sliderbase/sliderbase.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://cmg5dtx3dvqo3" path="res://pause_menu.tscn" id="12_dg77c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
 shader = ExtResource("6_7mycd")
@@ -85,3 +86,7 @@ script = ExtResource("7_5vw27")
 [node name="Pcunit" parent="." instance=ExtResource("10_4c57u")]
 
 [node name="Sliderbase" parent="." instance=ExtResource("11_efxa6")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("12_dg77c")]
