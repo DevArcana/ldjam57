@@ -1,7 +1,12 @@
 extends Control
 
+var bus_index: int
+
 func _ready() -> void:
 	visible = false
+	bus_index = AudioServer.get_bus_index("Master")
+	$VBoxContainer/VolumeSlider.value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
+	$VBoxContainer/VolumeSlider.connect("value_changed", _on_h_slider_value_changed)
 
 func resume() -> void:
 	visible = false
@@ -33,3 +38,6 @@ func _on_exit_pressed() -> void:
 
 func _process(delta: float) -> void:
 	pauseESC()
+
+func _on_h_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
