@@ -133,14 +133,9 @@ func clear_game_state() -> void:
 	oxygen = 18
 	external_heat_mod = -20
 	_power_generated = 0
-	_power_consumed_units.clear()
-	if "targets" in Submarine:
-		Submarine.targets.clear()
+	_power_consumed_units = []
+	targets = []
 
 func restart_game() -> void:
 	clear_game_state()
-	var scene_path: String  = get_tree().current_scene.scene_file_path
-	var new_scene: Node = load(scene_path).instantiate()
-	get_tree().root.add_child(new_scene)
-	get_tree().current_scene.queue_free()
-	get_tree().current_scene = new_scene
+	get_tree().change_scene_to_file("res://main.tscn")
