@@ -22,9 +22,19 @@ func pauseESC() -> void:
 func _on_resume_pressed() ->void:
 	resume()
 
-func _on_restart_pressed() ->void:
+func _on_restart_pressed() -> void:
 	resume()
-	get_tree().reload_current_scene()
+
+	if "targets" in Submarine:
+		Submarine.targets.clear()
+
+	var scene_path: String = get_tree().current_scene.scene_file_path
+	var new_scene: PackedScene = load(scene_path)
+	var scene_instance: Node = new_scene.instantiate()
+
+	get_tree().root.add_child(scene_instance)
+	get_tree().current_scene.queue_free()
+	get_tree().current_scene = scene_instance
 
 func _on_exit_pressed() -> void:
 	resume()

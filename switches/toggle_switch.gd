@@ -31,4 +31,5 @@ func interact_stop() -> void:
 
 func _ready() -> void:
 	if start_on:
+		await get_tree().process_frame
 		toggle()

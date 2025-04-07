@@ -42,8 +42,10 @@ var power_generated: int:
 		elif _power_generated < len(_power_consumed_units):
 			_power_generated = 0
 		
-		while power_generated < power_consumed:
-			(_power_consumed_units.pop_front() as SubmarineSystem).power_unit_drained()
+		while power_generated < power_consumed and _power_consumed_units.size() > 0:
+			var unit: Object = _power_consumed_units.pop_front()
+			if is_instance_valid(unit):
+				(unit as SubmarineSystem).power_unit_drained()
 		
 		power_generated_changed.emit()
 
