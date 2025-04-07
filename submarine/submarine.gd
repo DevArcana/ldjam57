@@ -137,5 +137,5 @@ func clear_game_state() -> void:
 	targets = []
 
 func restart_game() -> void:
-	clear_game_state()
 	get_tree().change_scene_to_file("res://main.tscn")
+	clear_game_state()
