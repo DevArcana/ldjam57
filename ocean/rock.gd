@@ -1,4 +1,5 @@
 extends Scannable
+class_name Rock
 
 @export var collider: CollisionPolygon2D
 @export var mesh: Polygon2D
