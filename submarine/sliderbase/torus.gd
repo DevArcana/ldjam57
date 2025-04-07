@@ -1,77 +1,64 @@
 extends Interactable
 
 var interacting := false
-var last_mouse_motion: Vector2 = Vector2.ZERO
-var torus_rotation: float = 0.0
-
-const skip_frames := 10
-var skipped := 0
-
-func vector_direction(from: Vector2, to: Vector2) -> int:
-	var cross: float = from.x * to.y - from.y * to.x
-	if is_zero_approx(cross):
-		return 0
-	elif cross > 0.0:
-		return 1
-	else:
-		return -1
+var prev_mode: Input.MouseMode
+var prev_dir: Vector3 = Vector3.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not interacting:
 		return
 	
 	if event is InputEventMouseMotion:
+		event = event as InputEventMouseMotion
+		# Define the interaction plane of the torus
+		var up := global_transform.basis * Vector3.UP
+		var interaction_plane := Plane(up, global_position)
 		
-		if skipped == 0:
-			last_mouse_motion = event.position
-			skipped += 1
+		# construct the ray's origin and normal
+		var camera := get_viewport().get_camera_3d()
+		var mouse_pos := get_viewport().get_mouse_position()
+		var mouse_origin := camera.project_ray_origin(mouse_pos)
+		var mouse_normal := camera.project_ray_normal(mouse_pos)
+		
+		# find intersection of the interaction plane with mouse ray
+		var point_variant: Variant = interaction_plane.intersects_ray(mouse_origin, mouse_normal)
+		if point_variant == null or not point_variant is Vector3:
 			return
-		if skipped < skip_frames:
-			skipped += 1
+		
+		var point := point_variant as Vector3
+		if point == null:
+			return
+					
+		#DebugDraw3D.draw_sphere(point, 0.01, Color.BLUE)
+		#DebugDraw3D.draw_sphere(global_position, 0.01, Color.MAGENTA)
+		
+		# construct vector from torus to point
+		var dir := point - global_position
+		if prev_dir == Vector3.ZERO:
+			prev_dir = dir
 			return
 		
-		var pos: Vector2 = event.position
-		#var diff: Vector2 = event.relative
-		#var prev := pos - diff
+		var angle := prev_dir.signed_angle_to(dir, up)
 		
-		#var angle := prev.angle_to(pos)
-		#var angle := pos.angle_to(diff)
-		var angle := last_mouse_motion.angle_to(pos)
+		# this is to avoid jitter at low distance
+		angle /= max(1.0 / dir.length(), 1.0)
 		
-		var cross := vector_direction(last_mouse_motion, pos)
-		
-		print("\nPosition: " + str(pos))
-		#print("Diff: " + str(diff))
-		print("Previous: " + str(last_mouse_motion))
-		print("Angle: " + str(angle))
-		print("Angle: " + str(rad_to_deg(angle)))
-		print("Direction: " + str(cross))
-		print("\n\n")
-		
-		skipped = 0
-		
-		#transform.origin
-		torus_rotation += cross * event.relative.length()
-		rotation.y = torus_rotation
-		
-		#if last_mouse_motion == Vector3.ZERO:
-			#last_mouse_motion = event.position
-			#return
-		
-		#var dot := event.position.dot(event.relative)
-		#
-		#var vec_to_last := last_mouse_motion - transform.origin
-		#var vec_to_curr := event.position - transform.origin
-		#
-		#get_viewport()
-		#var dist: float = event.relative.x * 0.001 - event.relative.y * 0.001
+		#DebugDraw3D.draw_line(global_position, global_position + dir, Color.GREEN)
+		#DebugDraw3D.draw_line(global_position, global_position + prev_dir, Color.RED)
+		prev_dir = dir
+		rotate_y(angle)
+		Submarine.submarine2d.turn -= angle * 5.0
 
 ## override this
 func interact_start() -> void:
 	Events.lock_camera.emit()
 	interacting = true
+	prev_mode = Input.mouse_mode
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	prev_dir = Vector3.ZERO
 
 ## override this
 func interact_stop() -> void:
 	Events.unlock_camera.emit()
 	interacting = false
+	Input.mouse_mode = prev_mode

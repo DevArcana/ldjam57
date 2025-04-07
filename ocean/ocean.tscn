@@ -11,10 +11,10 @@
 [node name="Rocks" type="Node2D" parent="."]
 
 [node name="Rock" parent="Rocks" instance=ExtResource("2_e15e0")]
-position = Vector2(58, 0)
+position = Vector2(114, 31)
 
 [node name="Rock2" parent="Rocks" instance=ExtResource("2_e15e0")]
-position = Vector2(3, -77)
+position = Vector2(-27, -131)
 
 [node name="Rock3" parent="Rocks" instance=ExtResource("2_e15e0")]
 position = Vector2(164, -32)

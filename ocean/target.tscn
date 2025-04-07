@@ -4,6 +4,8 @@
 
 [node name="Target" type="RigidBody2D"]
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_j67bw")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]

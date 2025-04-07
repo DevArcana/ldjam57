@@ -24,7 +24,7 @@ var sonar_power: int:
 var sonar_speed: float = 0.0
 
 var forward: int = 0
-var turn: int = 0
+var turn: float = 0
 
 func _ready() -> void:
 	sonar_power = 2
@@ -33,6 +33,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	scanner.rotate(delta * sonar_speed)
 	apply_force(Vector2(0.0, -forward * 1000).rotated(rotation))
+	apply_torque(turn)
+	turn = lerpf(turn, 0.0, delta)
+	DebugDraw2D.set_text("turn", turn)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
