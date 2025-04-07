@@ -5,6 +5,18 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
 bg_color = Color(0, 0, 0, 0.8)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 3
+border_color = Color(0, 0.737255, 0.258824, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 9
+shadow_color = Color(0, 0, 0, 0.8)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 3
@@ -24,18 +36,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0.737255, 0.258824, 1)
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-corner_detail = 9
-shadow_color = Color(0, 0, 0, 0.8)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 3
 border_color = Color(0, 0.737255, 0.258824, 1)
 border_blend = true
@@ -84,6 +84,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 18
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_7vrkn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
@@ -94,6 +95,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 18
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_06t4h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
@@ -104,6 +106,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 18
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_06t4h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
