@@ -3,7 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://neb0lapouprs" path="res://assets/models/submarine/sliderbase.res" id="1_nacdn"]
 [ext_resource type="ArrayMesh" uid="uid://dxaqshynif26v" path="res://assets/models/submarine/phob.res" id="3_mfxw3"]
 [ext_resource type="Script" uid="uid://dxfhfenqw7da0" path="res://submarine/sliderbase/phob.gd" id="4_mfxw3"]
-[ext_resource type="Script" path="res://submarine/sliderbase/torus.gd" id="4_s05kf"]
+[ext_resource type="Script" uid="uid://cym8w32vpdaui" path="res://submarine/sliderbase/torus.gd" id="4_s05kf"]
 [ext_resource type="ArrayMesh" uid="uid://dsvhgm275w2ml" path="res://assets/models/submarine/torus.res" id="4_uamcf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s05kf"]
