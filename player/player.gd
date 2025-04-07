@@ -13,6 +13,8 @@ extends CharacterBody3D
 
 ## Used for interaction in mouse mode
 @export var camera: Camera3D
+var shake: CameraShake3D
+@export var hit_rock_audio: AudioStreamPlayer
 
 ## Used for footsteps.
 @export var footsteps: AudioStreamPlayer3D
@@ -55,9 +57,11 @@ func _ready() -> void:
 	Events.lock_camera.connect(_lock_camera)
 	Events.unlock_camera.connect(_unlock_camera)
 	Events.hit_rock.connect(_hit_rock)
+	shake = CameraShake3D.new(camera)
 
 func _hit_rock() -> void:
-	pass
+	shake._start_shake(3, 0.05)
+	hit_rock_audio.play()
 
 var timer: float = 0.0
 var moved: bool = false
@@ -136,3 +140,6 @@ func handle_interactions() -> void:
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	handle_interactions()
+
+func _process(delta: float) -> void:
+	shake._update(delta)

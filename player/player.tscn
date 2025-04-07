@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://nfnnlxxwwg4i"]
+[gd_scene load_steps=8 format=3 uid="uid://nfnnlxxwwg4i"]
 
 [ext_resource type="Script" uid="uid://jf6vv85osh8b" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://pkob8h6kgfuh" path="res://player/overlay.gd" id="2_rkbax"]
 [ext_resource type="AudioStream" uid="uid://nxn0ejelkkfy" path="res://assets/sounds/walk_sound_randomizer.tres" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://ddvq2h4y0wl8k" path="res://assets/sounds/hit_rock.mp3" id="4_yw30f"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kqu6x"]
 height = 1.8
@@ -14,12 +15,13 @@ radius = 0.1
 [sub_resource type="LabelSettings" id="LabelSettings_oul6g"]
 font_size = 32
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("body", "head", "interactor", "camera", "footsteps")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("body", "head", "interactor", "camera", "hit_rock_audio", "footsteps")]
 script = ExtResource("1_oul6g")
 body = NodePath("Body")
 head = NodePath("Body/Head")
 interactor = NodePath("Body/Head/Camera3D/ShapeCast3D")
 camera = NodePath("Body/Head/Camera3D")
+hit_rock_audio = NodePath("HitRockAudio")
 footsteps = NodePath("AudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -101,3 +103,6 @@ vertical_alignment = 1
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_g1dw6")
+
+[node name="HitRockAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yw30f")
