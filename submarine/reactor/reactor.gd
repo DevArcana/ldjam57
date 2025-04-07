@@ -6,6 +6,8 @@ class_name SubmarineReactor
 @export var particles: GPUParticles3D
 @export var explosion_sound: AudioStreamPlayer
 @export var shutting_down_sound: AudioStreamPlayer
+@export var needs_restart_sound: AudioStreamPlayer
+@export var starting_sound: AudioStreamPlayer
 
 var heat: int = 0
 var max_heat: int = 0
@@ -58,6 +60,10 @@ func _ready() -> void:
 	Submarine.power_generated_changed.connect(_power_generated_changed)
 
 func inc_value() -> void:
+	if Submarine.power_generated == 0:
+		needs_restart_sound.play()
+		return
+	
 	if Submarine.power_generated < power_indicator.diode_count:
 		Submarine.power_generated += 1
 	refresh_visuals()
@@ -65,4 +71,14 @@ func inc_value() -> void:
 func dec_value() -> void:
 	if Submarine.power_generated > 0:
 		Submarine.power_generated -= 1
+	refresh_visuals()
+
+func restart_reactor() -> void:
+	starting_sound.play()
+	Submarine.power_generated = 15
+	for i in 3:
+		Submarine.consume_power_unit(Submarine.life_support)
+	
+	for i in 3:
+		Submarine.consume_power_unit(Submarine.sonar)
 	refresh_visuals()

@@ -63,7 +63,7 @@ func consume_power_unit(system: SubmarineSystem) -> bool:
 		# exceeded power draw
 		power_generated = 0
 		return false
-	
+		
 	_power_consumed_units.push_front(system)
 	system.power_unit_provided()
 	power_unit_consumed.emit()

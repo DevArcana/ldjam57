@@ -2,7 +2,8 @@ extends Node
 
 ## This method will be called after all ship's systems.
 func _ready() -> void:
-	for i in 10:
+	Submarine.power_generated = 1
+	for i in 9:
 		Submarine.reactor.inc_value()
 	
 	for i in 3:

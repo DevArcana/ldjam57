@@ -21,10 +21,12 @@ func _refresh_visuals() -> void:
 		indicator.set_diode(i, Indicator.DiodeColor.GREEN)
 
 func _inc_sonar() -> void:
-	Submarine.consume_power_unit(self)
+	if Submarine.submarine2d.sonar_power < 3:
+		Submarine.consume_power_unit(self)
 
 func _dec_sonar() -> void:
-	Submarine.release_power_unit(self)
+	if Submarine.submarine2d.sonar_power > 0:
+		Submarine.release_power_unit(self)
 
 func power_unit_drained() -> void:
 	Submarine.submarine2d.sonar_power -= 1
