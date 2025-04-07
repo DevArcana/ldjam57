@@ -5,9 +5,10 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwcfo"]
 bg_color = Color(0, 0, 0, 0.423529)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05uyy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p81d2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 3
+border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0, 0.737255, 0.258824, 1)
@@ -19,10 +20,9 @@ corner_radius_bottom_left = 16
 corner_detail = 9
 shadow_color = Color(0, 0, 0, 0.8)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p81d2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05uyy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 3
-border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0, 0.737255, 0.258824, 1)
@@ -85,6 +85,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 18
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_p81d2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_05uyy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p81d2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2nc7s")
@@ -96,6 +97,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 18
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_p81d2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_05uyy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p81d2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2nc7s")
@@ -106,6 +108,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 18
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_p81d2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_05uyy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p81d2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2nc7s")
