@@ -145,6 +145,8 @@ stream = ExtResource("7_4j1xp")
 
 [node name="Starting" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_adm4u")
+volume_db = -18.335
+pitch_scale = 0.14
 
 [node name="Running" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265813, 1.10394, 2.28482)
