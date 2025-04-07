@@ -7,3 +7,5 @@ signal score_changed
 
 signal lock_camera
 signal unlock_camera
+
+signal hit_rock

@@ -54,7 +54,10 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Events.lock_camera.connect(_lock_camera)
 	Events.unlock_camera.connect(_unlock_camera)
+	Events.hit_rock.connect(_hit_rock)
 
+func _hit_rock() -> void:
+	pass
 
 var timer: float = 0.0
 var moved: bool = false
