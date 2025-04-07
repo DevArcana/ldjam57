@@ -136,6 +136,8 @@ font_size = 80
 
 [node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ilotv")
+volume_db = -31.264
+pitch_scale = 0.9
 
 [node name="ShuttingDown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ctsjy")
