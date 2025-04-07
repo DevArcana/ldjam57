@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	apply_force(Vector2(0.0, -forward * 1000).rotated(rotation))
 	apply_torque(turn)
 	turn = lerpf(turn, 0.0, delta)
-	DebugDraw2D.set_text("turn", turn)
+	#DebugDraw2D.set_text("turn", turn)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
